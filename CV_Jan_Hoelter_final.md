@@ -1,5 +1,5 @@
-# Jan Hölter  
-**Product & Leadership Executive**  
+# Jan Hölter
+**Product & Leadership Executive**
 *Klarheit, Fokus und Entscheidungsfähigkeit in komplexen Produktorganisationen schaffen*
 
 Köln, Deutschland  
@@ -77,8 +77,8 @@ Gesamtverantwortung für digitale Produktinitiativen in einem mittelständischen
 
 ## Ausbildung
 
-**Ruhr-Universität Bochum**  
-Bachelor of Science (B.Sc.), Informatik  
+### Ruhr-Universität Bochum
+Bachelor of Science (B.Sc.), Informatik
 *2006 – 2010*
 
 ---
