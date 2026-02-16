@@ -184,6 +184,11 @@ class HTMLGenerator:
                 'link_copied': 'Link kopiert!'
             }
 
+    def _get_timestamp(self) -> str:
+        """Get current timestamp for source comment"""
+        from datetime import datetime
+        return datetime.now().strftime('%Y-%m-%d %H:%M')
+
     def generate(self) -> str:
         """Generate complete HTML"""
         header = self._generate_header()
@@ -197,6 +202,13 @@ class HTMLGenerator:
 
         return f'''<!DOCTYPE html>
 <html lang="{lang_attr}">
+<!--
+  CV Export Template
+  Generated: {self._get_timestamp()}
+  Source: Markdown CV file
+  Photo: {self.photo}
+  Generator: generate-html.py
+-->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -215,14 +227,16 @@ class HTMLGenerator:
   </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-    @page {{ size: A4; margin: 20mm; }}
+    @page {{ size: A4; margin: 12mm 15mm; }}
     @media print {{
       body {{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }}
       .no-print {{ display: none !important; }}
+      .no-break {{ break-inside: avoid; page-break-inside: avoid; }}
+      .page-break {{ page-break-before: always; }}
     }}
   </style>
 </head>
-<body class="font-sans text-gray-900 bg-gray-50 leading-relaxed">
+<body class="font-sans text-gray-900 bg-white leading-relaxed print:bg-white">
   <!-- Action Buttons -->
   <div class="no-print fixed top-4 right-4 flex gap-2">
     <button onclick="window.print()" class="px-3 py-1.5 text-xs text-gray-600 border border-gray-300 rounded hover:bg-gray-50 flex items-center gap-1.5 bg-white">
@@ -240,7 +254,7 @@ class HTMLGenerator:
   </div>
 
   <!-- Container with Shadow -->
-  <div class="max-w-3xl mx-auto my-8 bg-white shadow-lg print:shadow-none">
+  <div class="max-w-3xl mx-auto my-8 bg-white shadow-lg print:shadow-none print:my-0">
     <div class="px-8 py-16 print:px-0 print:py-0">
 {header}
 {sections}
@@ -337,7 +351,7 @@ class HTMLGenerator:
         paragraphs_html = '\n'.join(paragraphs)
 
         return f'''      <!-- Profil -->
-      <section class="mb-14">
+      <section class="mb-12 no-break">
         <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">{section['title']}</h2>
         <div class="text-sm text-gray-800 space-y-3 leading-relaxed">
 {paragraphs_html}
@@ -354,7 +368,7 @@ class HTMLGenerator:
             description_html = ''
             if 'description' in job:
                 desc_text = ' '.join(job['description'])
-                description_html = f'''        <p class="text-sm text-gray-700 mb-2 leading-relaxed">
+                description_html = f'''        <p class="text-xs text-gray-700 mb-2 leading-relaxed">
           {desc_text}
         </p>
 '''
@@ -367,7 +381,7 @@ class HTMLGenerator:
 {bullet_items}
         </ul>'''
 
-            job_html = f'''      <div class="mb-10">
+            job_html = f'''      <div class="mb-10 no-break">
         <div class="mb-2">
           <h3 class="text-base font-medium">{job['title']}</h3>
           <p class="text-sm font-medium text-gray-700">{job.get('job_title', '')}</p>
@@ -381,8 +395,8 @@ class HTMLGenerator:
         jobs_section = '\n'.join(jobs_html)
 
         return f'''      <!-- Berufserfahrung -->
-      <section class="mb-14">
-        <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-6 font-medium">{section['title']}</h2>
+      <section class="mb-12">
+        <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">{section['title']}</h2>
 {jobs_section}
       </section>
 '''
@@ -439,7 +453,7 @@ class HTMLGenerator:
         education_html = '\n'.join(education_items)
 
         return f'''      <!-- Ausbildung -->
-      <section class="mb-14">
+      <section class="mb-12 no-break">
         <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">{section['title']}</h2>
 {education_html}
       </section>
@@ -472,7 +486,7 @@ class HTMLGenerator:
             else:
                 # Regular card
                 description = ' '.join([item if isinstance(item, str) else '' for item in subsection.get('content', [])])
-                card_html = f'''        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+                card_html = f'''        <div class="bg-gray-50 p-4 rounded border border-gray-200 no-break">
           <h3 class="text-sm font-medium mb-1.5">{subsection['title']}</h3>
           <p class="text-xs text-gray-700 leading-relaxed">{description}</p>
         </div>'''
@@ -481,7 +495,7 @@ class HTMLGenerator:
         cards_section = '\n'.join(cards_html)
 
         return f'''      <!-- Schwerpunkte -->
-      <section class="mb-14">
+      <section class="mb-12 no-break">
         <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">{section['title']}</h2>
         {intro_html}
         <div class="grid grid-cols-2 gap-4 mb-6">
@@ -501,7 +515,7 @@ class HTMLGenerator:
         cards_html = []
         for subsection in section['subsections']:
             description = ' '.join([item if isinstance(item, str) else '' for item in subsection.get('content', [])])
-            card_html = f'''        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+            card_html = f'''        <div class="bg-gray-50 p-4 rounded border border-gray-200 no-break">
           <h4 class="text-sm font-medium mb-1.5">{subsection['title']}</h4>
           <p class="text-xs text-gray-700 leading-relaxed">{description}</p>
         </div>'''
@@ -510,7 +524,7 @@ class HTMLGenerator:
         cards_section = '\n'.join(cards_html)
 
         return f'''      <!-- Haltung -->
-      <section class="mb-14">
+      <section class="mb-12 no-break">
         <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">{section['title']}</h2>
         {intro_html}
         <div class="grid grid-cols-2 gap-4">
@@ -530,7 +544,7 @@ class HTMLGenerator:
         languages_text = ' · '.join(languages)
 
         return f'''      <!-- Sprachen -->
-      <section>
+      <section class="no-break">
         <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">{section['title']}</h2>
         <p class="text-sm text-gray-700">{languages_text}</p>
       </section>

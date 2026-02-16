@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="de">
+<!--
+  CV Export Template
+  Generated: 2026-02-16 15:39
+  Source: Markdown CV file
+  Photo: Jan_Hoelter_Foto.jpeg
+  Generator: generate-html.py
+-->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,14 +25,16 @@
   </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-    @page { size: A4; margin: 20mm; }
+    @page { size: A4; margin: 12mm 15mm; }
     @media print {
       body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       .no-print { display: none !important; }
+      .no-break { break-inside: avoid; page-break-inside: avoid; }
+      .page-break { page-break-before: always; }
     }
   </style>
 </head>
-<body class="font-sans text-gray-900 bg-gray-50 leading-relaxed">
+<body class="font-sans text-gray-900 bg-white leading-relaxed print:bg-white">
   <!-- Action Buttons -->
   <div class="no-print fixed top-4 right-4 flex gap-2">
     <button onclick="window.print()" class="px-3 py-1.5 text-xs text-gray-600 border border-gray-300 rounded hover:bg-gray-50 flex items-center gap-1.5 bg-white">
@@ -43,7 +52,7 @@
   </div>
 
   <!-- Container with Shadow -->
-  <div class="max-w-3xl mx-auto my-8 bg-white shadow-lg print:shadow-none">
+  <div class="max-w-3xl mx-auto my-8 bg-white shadow-lg print:shadow-none print:my-0">
     <div class="px-8 py-16 print:px-0 print:py-0">
       <!-- Header -->
       <header class="mb-16">
@@ -78,7 +87,7 @@
       </header>
 
       <!-- Profil -->
-      <section class="mb-14">
+      <section class="mb-12 no-break">
         <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">Profil</h2>
         <div class="text-sm text-gray-800 space-y-3 leading-relaxed">
         <p>Ich gestalte Produktorganisationen in komplexen, gewachsenen Strukturen – insbesondere dort, wo strategische Zielbilder, Priorisierung und Entscheidungslogiken nicht selbstverständlich sind.</p>
@@ -88,15 +97,15 @@
       </section>
 
       <!-- Berufserfahrung -->
-      <section class="mb-14">
-        <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-6 font-medium">Berufserfahrung</h2>
-      <div class="mb-10">
+      <section class="mb-12">
+        <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">Berufserfahrung</h2>
+      <div class="mb-10 no-break">
         <div class="mb-2">
           <h3 class="text-base font-medium">ABS Safety GmbH</h3>
           <p class="text-sm font-medium text-gray-700">Head of Digital Products</p>
           <p class="text-xs text-gray-500">Jan 2021 – heute | Essen, Köln, Kevelaer</p>
         </div>
-        <p class="text-sm text-gray-700 mb-2 leading-relaxed">
+        <p class="text-xs text-gray-700 mb-2 leading-relaxed">
           Gesamtverantwortung für digitale Produktinitiativen in einem mittelständischen Industrieunternehmen mit starkem Kerngeschäft und gewachsenen organisatorischen Strukturen.
         </p>
         <ul class="text-xs text-gray-700 space-y-1.5 ml-4">
@@ -107,13 +116,13 @@
           <li>• Verantwortung für explorative digitale Initiativen jenseits des Kerngeschäfts; fundierte Lernerfahrungen zu Kapitalallokation, Fokus und organisationaler Anschlussfähigkeit.</li>
         </ul>
       </div>
-      <div class="mb-10">
+      <div class="mb-10 no-break">
         <div class="mb-2">
           <h3 class="text-base font-medium">codecentric AG</h3>
           <p class="text-sm font-medium text-gray-700">Head of Digitization Labs</p>
           <p class="text-xs text-gray-500">Mai 2019 – Jun 2020 | Solingen</p>
         </div>
-        <p class="text-sm text-gray-700 mb-2 leading-relaxed">
+        <p class="text-xs text-gray-700 mb-2 leading-relaxed">
           Leitung von drei interdisziplinären Produktteams im Kontext von „Product Discovery as a Service“ für Enterprise-Kunden.
         </p>
         <ul class="text-xs text-gray-700 space-y-1.5 ml-4">
@@ -124,7 +133,7 @@
           <li>• Erprobung alternativer Revenue-Modelle mit Pilotkunden; relevante strategische Lernerfahrungen trotz begrenzter Skalierung.</li>
         </ul>
       </div>
-      <div class="mb-10">
+      <div class="mb-10 no-break">
         <div class="mb-2">
           <h3 class="text-base font-medium">Innovation Strategist (the black frame)</h3>
           <p class="text-sm font-medium text-gray-700"></p>
@@ -136,7 +145,7 @@
           <li>• Mitwirkung an der Entwicklung und Vorbereitung einer eigenständigen Neugründung im Umfeld eines großen deutschen Versicherungsunternehmens mit Fokus auf ein neuartiges Versicherungs- und Leistungsversprechen (vertraulich).</li>
         </ul>
       </div>
-      <div class="mb-10">
+      <div class="mb-10 no-break">
         <div class="mb-2">
           <h3 class="text-base font-medium">IT Consultant</h3>
           <p class="text-sm font-medium text-gray-700">codecentric AG</p>
@@ -148,7 +157,7 @@
           <li>• Unterstützung von Kunden bei der Übersetzung komplexer Geschäftsprozesse in digitale Lösungen.</li>
         </ul>
       </div>
-      <div class="mb-10">
+      <div class="mb-10 no-break">
         <div class="mb-2">
           <h3 class="text-base font-medium">CRON Systems-Automation GmbH</h3>
           <p class="text-sm font-medium text-gray-700">Softwareentwickler</p>
@@ -162,7 +171,7 @@
       </section>
 
       <!-- Ausbildung -->
-      <section class="mb-14">
+      <section class="mb-12 no-break">
         <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">Ausbildung</h2>
         <div>
           <p class="text-sm font-medium">Ruhr-Universität Bochum</p>
@@ -172,25 +181,25 @@
       </section>
 
       <!-- Schwerpunkte -->
-      <section class="mb-14">
+      <section class="mb-12 no-break">
         <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">Schwerpunkte</h2>
         <p class="text-sm text-gray-700 mb-6 leading-relaxed">
           Ich arbeite an der Schnittstelle von Strategie, Produkt und Organisation – mit dem Ziel, Entscheidungsfähigkeit strukturell zu verankern und Produktarbeit wirksam zu machen.
         </p>
         <div class="grid grid-cols-2 gap-4 mb-6">
-        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+        <div class="bg-gray-50 p-4 rounded border border-gray-200 no-break">
           <h3 class="text-sm font-medium mb-1.5">Strategische Produktführung & Entscheidungslogik</h3>
           <p class="text-xs text-gray-700 leading-relaxed">Übersetzung strategischer Zielbilder in priorisierte Produktarbeit. Strukturierung von Entscheidungsoptionen, explizite Benennung von Zielkonflikten und Aufbau klarer Eskalations- und Priorisierungsmechanismen.</p>
         </div>
-        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+        <div class="bg-gray-50 p-4 rounded border border-gray-200 no-break">
           <h3 class="text-sm font-medium mb-1.5">Outcome- & Hypothesengetriebene Produktarbeit</h3>
           <p class="text-xs text-gray-700 leading-relaxed">Systematische Reduktion von Unsicherheit durch klare Hypothesen, Experimente und überprüfbare Zielbilder. Nutzung quantitativer und qualitativer Signale zur Orientierung – insbesondere in frühen oder datenarmen Kontexten.</p>
         </div>
-        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+        <div class="bg-gray-50 p-4 rounded border border-gray-200 no-break">
           <h3 class="text-sm font-medium mb-1.5">Portfolio- & Strukturarbeit</h3>
           <p class="text-xs text-gray-700 leading-relaxed">Auseinandersetzung mit Kapitalallokation, Fokus und organisatorischer Anschlussfähigkeit digitaler Initiativen. Moderation von Spannungsfeldern zwischen Kerngeschäft, Exploration und langfristiger strategischer Ausrichtung.</p>
         </div>
-        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+        <div class="bg-gray-50 p-4 rounded border border-gray-200 no-break">
           <h3 class="text-sm font-medium mb-1.5">Leadership & Leistungsfähigkeit von Teams</h3>
           <p class="text-xs text-gray-700 leading-relaxed">Aufbau und Entwicklung leistungsfähiger Produkt- und Entwicklungsteams. Verbindung von Klarheit, Verantwortung und psychologischer Sicherheit. Wiederherstellung von Entscheidungsfähigkeit in konflikt- oder unsicherheitsgeprägten Situationen.</p>
         </div>
@@ -208,25 +217,25 @@
       </section>
 
       <!-- Haltung -->
-      <section class="mb-14">
+      <section class="mb-12 no-break">
         <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">Haltung</h2>
         <p class="text-sm text-gray-700 mb-6 leading-relaxed">
           Ich suche die Zusammenarbeit mit Organisationen, in denen strategische Klarheit, gemeinsame Entscheidungsfähigkeit und ein starkes Führungsteam die Grundlage für nachhaltige Produktentwicklung bilden.
         </p>
         <div class="grid grid-cols-2 gap-4">
-        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+        <div class="bg-gray-50 p-4 rounded border border-gray-200 no-break">
           <h4 class="text-sm font-medium mb-1.5">Klarheit ermöglicht Geschwindigkeit</h4>
           <p class="text-xs text-gray-700 leading-relaxed">Ich glaube, dass nachhaltige Geschwindigkeit nur dort entsteht, wo Zielbilder, Entscheidungsräume und Prioritäten explizit sind. Unklare Mandate erzeugen Aktivität, aber keine Wirkung.</p>
         </div>
-        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+        <div class="bg-gray-50 p-4 rounded border border-gray-200 no-break">
           <h4 class="text-sm font-medium mb-1.5">Entscheidungen sind Teamleistung</h4>
           <p class="text-xs text-gray-700 leading-relaxed">Gute Entscheidungen entstehen durch Reibung, nicht durch Hierarchie. Ich mache Zielkonflikte sichtbar, strukturiere Optionen und fördere kontroverse Diskussionen – mit dem Anspruch, gemeinsam tragfähige Lösungen zu entwickeln und danach geschlossen zu handeln.</p>
         </div>
-        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+        <div class="bg-gray-50 p-4 rounded border border-gray-200 no-break">
           <h4 class="text-sm font-medium mb-1.5">Menschen vor Mechanik</h4>
           <p class="text-xs text-gray-700 leading-relaxed">Produktorganisationen sind keine Ressourcenstrukturen. Leistung entsteht, wenn Menschen Orientierung, Verantwortung und psychologische Sicherheit erleben. Klarheit und Empathie sind für mich kein Widerspruch, sondern Voraussetzung für Exzellenz.</p>
         </div>
-        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+        <div class="bg-gray-50 p-4 rounded border border-gray-200 no-break">
           <h4 class="text-sm font-medium mb-1.5">Unsicherheit bewusst gestalten</h4>
           <p class="text-xs text-gray-700 leading-relaxed">Produktarbeit ist systematische Reduktion von Unsicherheit. Hypothesen, Experimente und transparente Annahmen sind dabei wichtiger als Perfektion oder vermeintliche Sicherheit.</p>
         </div>
@@ -234,7 +243,7 @@
       </section>
 
       <!-- Sprachen -->
-      <section>
+      <section class="no-break">
         <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">Sprachen</h2>
         <p class="text-sm text-gray-700">Deutsch (Muttersprache) · Englisch (fließend)</p>
       </section>
