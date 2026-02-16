@@ -11,11 +11,11 @@ Köln, Deutschland
 
 ## Profil
 
-Ich arbeite an der Schnittstelle von Produktführung, Technologie und Organisation – insbesondere in komplexen, nicht idealtypischen Umfeldern.
+Ich gestalte Produktorganisationen in komplexen, gewachsenen Strukturen – insbesondere dort, wo strategische Zielbilder, Priorisierung und Entscheidungslogiken nicht selbstverständlich sind.
 
-In den vergangenen Jahren habe ich Produktteams in organisationalen Kontexten geführt, in denen Zielklarheit, messbare Outcomes und explizite Entscheidungslogiken schrittweise entwickelt wurden. Diese Erfahrung hat mein Verständnis dafür geschärft, wie entscheidend strukturell verankerte Outcome-Orientierung für wirksame Produktarbeit ist.
+Mein Schwerpunkt liegt auf der strukturellen Verankerung von Outcome-Orientierung: klare Zieldefinition, explizite Entscheidungsräume, transparente Priorisierung und belastbare Eskalationsmechanismen. Produktarbeit verstehe ich als systematische Reduktion von Unsicherheit durch klare Entscheidungen und konsequente Fokussierung.
 
-Mein heutiger Schwerpunkt liegt darauf, Entscheidungsräume explizit zu machen, Hypothesen sauber zu formulieren und Produktarbeit so zu strukturieren, dass Lernen, Priorisierung und Wirkung möglich werden – nicht aus idealisierten Modellen, sondern aus praktischer Erfahrung mit ihren Grenzen.
+Dabei verbinde ich analytische Schärfe mit einer klaren, menschenorientierten Führungsarbeit. Ich mache Zielkonflikte explizit, strukturiere Entscheidungsoptionen und schaffe Orientierung – ohne die individuellen Perspektiven und Motivationen der Menschen aus dem Blick zu verlieren, die diese Entscheidungen tragen und umsetzen. Leistungsfähigkeit entsteht für mich dort, wo Klarheit, Verantwortung und Vertrauen zusammenkommen.
 
 ---
 
@@ -25,12 +25,12 @@ Mein heutiger Schwerpunkt liegt darauf, Entscheidungsräume explizit zu machen, 
 **Head of Digital Products**  
 *Jan 2021 – heute | Essen, Köln, Kevelaer*
 
-- Führung und Weiterentwicklung digitaler Produktinitiativen in einem mittelständischen Industrieunternehmen mit starkem Kerngeschäft sowie gewachsenen technischen und organisatorischen Strukturen.  
-- Skalierung des internen Produkt- und Entwicklungsteams von 4+ auf über 25 Mitarbeitende (zzgl. externer Partner und Dienstleister).  
-- Beitrag zur Skalierung des Kerngeschäfts durch den Ausbau von Self-Service-Funktionalitäten und gezielte Befähigung von Kunden, sodass rund 65 % der Planungen eigenständig durchgeführt wurden und ein Angebotsvolumen von ca. 30.000 Angeboten pro Jahr ermöglicht wurde.  
-- Nutzung quantitativer Signale entlang der Customer Journey zur Orientierung und Hypothesenbildung in einem frühen Nutzungskontext mit begrenzter Datenbasis.  
-- Konkrete Erfahrung mit den Grenzen von Führung ohne klares strukturelles Mandat sowie ohne explizite Priorisierungs- und Eskalationslogiken; daraus abgeleitet ein wachsender Fokus auf Entscheidungsräume, Governance und Portfoliopriorisierung als notwendige Voraussetzungen für nachhaltige Produktergebnisse.  
-- Verantwortung für digitale Initiativen jenseits des Kerngeschäfts, inklusive eines frühen Venture-Ansatzes, der wertvolle Lernerfahrungen zu Timing, Fokus und organisationaler Anschlussfähigkeit geliefert hat.
+Gesamtverantwortung für digitale Produktinitiativen in einem mittelständischen Industrieunternehmen mit starkem Kerngeschäft und gewachsenen organisatorischen Strukturen.
+- Aufbau und Skalierung der Produkt- und Entwicklungsorganisation von 4 auf über 25 interne Mitarbeitende (zzgl. externer Partner).
+- Strategische Weiterentwicklung digitaler Self-Service-Produkte mit direktem Einfluss auf das Kerngeschäft; 65 % der Planungen wurden durch Kunden eigenständig durchgeführt, ermöglicht durch gezielte Produkt- und Prozessgestaltung.
+- Einführung strukturierter Hypothesen- und Priorisierungsansätze auf Basis quantitativer Signale entlang der Customer Journey trotz begrenzter Datenbasis.
+- Auseinandersetzung mit strategischen Zielkonflikten und Priorisierungsfragen in einem Umfeld mit gewachsenen Strukturen; daraus ein klarer Fokus auf explizite Entscheidungsräume und transparente Priorisierung als Voraussetzung für wirksame Produktarbeit.
+- Verantwortung für explorative digitale Initiativen jenseits des Kerngeschäfts; fundierte Lernerfahrungen zu Kapitalallokation, Fokus und organisationaler Anschlussfähigkeit.
 
 ---
 
@@ -38,12 +38,12 @@ Mein heutiger Schwerpunkt liegt darauf, Entscheidungsräume explizit zu machen, 
 **Head of Digitization Labs**  
 *Mai 2019 – Jun 2020 | Solingen*
 
-- Führung von drei interdisziplinären Teams im Kontext von „Product Discovery as a Service“ für Enterprise-Kunden.  
-- Arbeit in frühen Produkt- und Marktkontexten mit hoher Unsicherheit, in denen Zielbilder, Hypothesen und mögliche Outcomes iterativ entwickelt wurden und qualitative Nutzersignale, Experimente und Lernzyklen im Vordergrund standen.  
-- Konzeption und Durchführung strukturierter Discovery-Formate mit enger Einbindung von Kunden in komplexe Problem- und Lösungsräume.  
-- Einsatz von Prototyping und qualitativen Feedback-Mechanismen, um Annahmen gezielt zu validieren oder bewusst zu verwerfen.  
-- Experimentelle Erprobung neuer Revenue-Modelle mit Pilotkunden; relevante Lernerfahrungen trotz begrenzter Markttraktion.  
-- Regelmäßige Zusammenarbeit mit Senior-Stakeholdern in frühen Entscheidungs- und Orientierungsphasen.
+ Leitung von drei interdisziplinären Produktteams im Kontext von „Product Discovery as a Service“ für Enterprise-Kunden.
+- Verantwortung für Hypothesen-getriebene Produktentwicklung in frühen Markt- und Innovationsphasen.
+- Entwicklung iterativer Zielbilder und Outcome-Modelle in hochgradig unsicheren Kontexten.
+- Durchführung strukturierter Discovery-Formate mit enger Kundeneinbindung und konsequenter Validierung durch Experimente.
+- Begleitung von Investitions- und Priorisierungsentscheidungen auf Senior-Level.
+- Erprobung alternativer Revenue-Modelle mit Pilotkunden; relevante strategische Lernerfahrungen trotz begrenzter Skalierung.
 
 ---
 
@@ -85,14 +85,54 @@ Bachelor of Science (B.Sc.), Informatik
 
 ## Schwerpunkte
 
-- Produktführung unter Unsicherheit  
-- Hypothesen- und experimentgetriebene Produktarbeit  
-- Entscheidungslogiken, Priorisierung & Eskalation  
-- Aufbau und Skalierung von Produkt- und Entwicklungsteams  
-- Verbindung von Produkt, Technologie und Organisation
+Ich arbeite an der Schnittstelle von Strategie, Produkt und Organisation – mit dem Ziel, Entscheidungsfähigkeit strukturell zu verankern und Produktarbeit wirksam zu machen.
+
+### Strategische Produktführung & Entscheidungslogik
+
+Übersetzung strategischer Zielbilder in priorisierte Produktarbeit. Strukturierung von Entscheidungsoptionen, explizite Benennung von Zielkonflikten und Aufbau klarer Eskalations- und Priorisierungsmechanismen.
+
+### Outcome- & Hypothesengetriebene Produktarbeit
+
+Systematische Reduktion von Unsicherheit durch klare Hypothesen, Experimente und überprüfbare Zielbilder. Nutzung quantitativer und qualitativer Signale zur Orientierung – insbesondere in frühen oder datenarmen Kontexten.
+
+### Portfolio- & Strukturarbeit
+
+Auseinandersetzung mit Kapitalallokation, Fokus und organisatorischer Anschlussfähigkeit digitaler Initiativen. Moderation von Spannungsfeldern zwischen Kerngeschäft, Exploration und langfristiger strategischer Ausrichtung.
+
+### Leadership & Leistungsfähigkeit von Teams
+
+Aufbau und Entwicklung leistungsfähiger Produkt- und Entwicklungsteams. Verbindung von Klarheit, Verantwortung und psychologischer Sicherheit. Wiederherstellung von Entscheidungsfähigkeit in konflikt- oder unsicherheitsgeprägten Situationen.
 
 ---
+### Methoden & Arbeitsweisen
 
+- OKR-Logiken & Outcome-Roadmapping
+- Hypothesen- & Experiment-Design
+- Discovery-Formate & qualitative Nutzerinterviews
+- Priorisierungs- & Entscheidungsframeworks
+- Moderation strategischer Konflikte und Eskalationsprozesse
+---
+## Haltung
+
+Ich suche die Zusammenarbeit mit Organisationen, in denen strategische Klarheit, gemeinsame Entscheidungsfähigkeit und ein starkes Führungsteam die Grundlage für nachhaltige Produktentwicklung bilden.
+
+### Klarheit ermöglicht Geschwindigkeit
+  
+Ich glaube, dass nachhaltige Geschwindigkeit nur dort entsteht, wo Zielbilder, Entscheidungsräume und Prioritäten explizit sind. Unklare Mandate erzeugen Aktivität, aber keine Wirkung.
+
+### Entscheidungen sind Teamleistung
+
+Gute Entscheidungen entstehen durch Reibung, nicht durch Hierarchie. Ich mache Zielkonflikte sichtbar, strukturiere Optionen und fördere kontroverse Diskussionen – mit dem Anspruch, gemeinsam tragfähige Lösungen zu entwickeln und danach geschlossen zu handeln.
+
+### Menschen vor Mechanik
+
+Produktorganisationen sind keine Ressourcenstrukturen. Leistung entsteht, wenn Menschen Orientierung, Verantwortung und psychologische Sicherheit erleben. Klarheit und Empathie sind für mich kein Widerspruch, sondern Voraussetzung für Exzellenz.
+
+### Unsicherheit bewusst gestalten
+
+Produktarbeit ist systematische Reduktion von Unsicherheit. Hypothesen, Experimente und transparente Annahmen sind dabei wichtiger als Perfektion oder vermeintliche Sicherheit.
+
+---
 ## Sprachen
 
 - Deutsch (Muttersprache)  

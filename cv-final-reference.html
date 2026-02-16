@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jan Hölter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+    @page { size: A4; margin: 20mm; }
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-900 bg-white leading-relaxed">
+  <!-- Action Buttons -->
+  <div class="no-print fixed top-4 right-4 flex gap-2">
+    <button onclick="window.print()" class="px-3 py-1.5 text-xs text-gray-600 border border-gray-300 rounded hover:bg-gray-50 flex items-center gap-1.5">
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+      </svg>
+      Drucken
+    </button>
+  </div>
+
+  <!-- Container -->
+  <div class="max-w-3xl mx-auto px-8 py-16 print:px-0 print:py-0">
+    <!-- Header -->
+    <header class="mb-16">
+      <div class="flex justify-between items-start gap-12 mb-6">
+        <div class="flex-1">
+          <h1 class="text-4xl font-light mb-1 tracking-tight">Jan Hölter</h1>
+          <p class="text-sm text-gray-600 font-medium mb-2">Product & Leadership Executive</p>
+          <p class="text-sm text-gray-600 italic">
+            Klarheit, Fokus und Entscheidungsfähigkeit in komplexen Produktorganisationen schaffen
+          </p>
+        </div>
+        <img src="Jan_Hoelter_Foto.jpeg" alt="Jan Hölter" class="w-28 h-28 rounded-full object-cover object-top grayscale">
+      </div>
+      <div class="flex flex-wrap gap-x-6 gap-y-1 text-xs text-gray-600">
+        <span class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+          Köln, Deutschland
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+          j.hoelter85@gmail.com
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+          +49 173 5448963
+        </span>
+        <a href="https://www.linkedin.com/in/jan-hölter-89b538109" class="flex items-center gap-1.5 underline hover:text-gray-900">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+          LinkedIn
+        </a>
+      </div>
+    </header>
+
+    <!-- Profil -->
+    <section class="mb-14">
+      <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">Profil</h2>
+      <div class="text-sm text-gray-800 space-y-3 leading-relaxed">
+        <p>Ich gestalte Produktorganisationen in komplexen, gewachsenen Strukturen – insbesondere dort, wo strategische Zielbilder, Priorisierung und Entscheidungslogiken nicht selbstverständlich sind.</p>
+        <p>Mein Schwerpunkt liegt auf der strukturellen Verankerung von Outcome-Orientierung: klare Zieldefinition, explizite Entscheidungsräume, transparente Priorisierung und belastbare Eskalationsmechanismen. Produktarbeit verstehe ich als systematische Reduktion von Unsicherheit durch klare Entscheidungen und konsequente Fokussierung.</p>
+        <p>Dabei verbinde ich analytische Schärfe mit einer klaren, menschenorientierten Führungsarbeit. Ich mache Zielkonflikte explizit, strukturiere Entscheidungsoptionen und schaffe Orientierung – ohne die individuellen Perspektiven und Motivationen der Menschen aus dem Blick zu verlieren, die diese Entscheidungen tragen und umsetzen. Leistungsfähigkeit entsteht für mich dort, wo Klarheit, Verantwortung und Vertrauen zusammenkommen.</p>
+      </div>
+    </section>
+
+    <!-- Schwerpunkte -->
+    <section class="mb-14">
+      <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">Schwerpunkte</h2>
+      <p class="text-sm text-gray-700 mb-6 leading-relaxed">
+        Ich arbeite an der Schnittstelle von Strategie, Produkt und Organisation – mit dem Ziel, Entscheidungsfähigkeit strukturell zu verankern und Produktarbeit wirksam zu machen.
+      </p>
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+          <h3 class="text-sm font-medium mb-1.5">Strategische Produktführung & Entscheidungslogik</h3>
+          <p class="text-xs text-gray-700 leading-relaxed">Übersetzung strategischer Zielbilder in priorisierte Produktarbeit. Strukturierung von Entscheidungsoptionen, explizite Benennung von Zielkonflikten und Aufbau klarer Eskalations- und Priorisierungsmechanismen.</p>
+        </div>
+        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+          <h3 class="text-sm font-medium mb-1.5">Outcome- & Hypothesengetriebene Produktarbeit</h3>
+          <p class="text-xs text-gray-700 leading-relaxed">Systematische Reduktion von Unsicherheit durch klare Hypothesen, Experimente und überprüfbare Zielbilder. Nutzung quantitativer und qualitativer Signale zur Orientierung – insbesondere in frühen oder datenarmen Kontexten.</p>
+        </div>
+        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+          <h3 class="text-sm font-medium mb-1.5">Portfolio- & Strukturarbeit</h3>
+          <p class="text-xs text-gray-700 leading-relaxed">Auseinandersetzung mit Kapitalallokation, Fokus und organisatorischer Anschlussfähigkeit digitaler Initiativen. Moderation von Spannungsfeldern zwischen Kerngeschäft, Exploration und langfristiger strategischer Ausrichtung.</p>
+        </div>
+        <div class="bg-gray-50 p-4 rounded border border-gray-200">
+          <h3 class="text-sm font-medium mb-1.5">Leadership & Leistungsfähigkeit von Teams</h3>
+          <p class="text-xs text-gray-700 leading-relaxed">Aufbau und Entwicklung leistungsfähiger Produkt- und Entwicklungsteams. Verbindung von Klarheit, Verantwortung und psychologischer Sicherheit. Wiederherstellung von Entscheidungsfähigkeit in konflikt- oder unsicherheitsgeprägten Situationen.</p>
+        </div>
+      </div>
+      <div class="pt-4 border-t border-gray-200">
+        <p class="text-xs text-gray-500 mb-3">Methoden & Arbeitsweisen</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-white border border-gray-300 rounded-full text-xs text-gray-700">OKR-Logiken & Outcome-Roadmapping</span>
+          <span class="px-3 py-1 bg-white border border-gray-300 rounded-full text-xs text-gray-700">Hypothesen- & Experiment-Design</span>
+          <span class="px-3 py-1 bg-white border border-gray-300 rounded-full text-xs text-gray-700">Discovery-Formate & qualitative Nutzerinterviews</span>
+          <span class="px-3 py-1 bg-white border border-gray-300 rounded-full text-xs text-gray-700">Priorisierungs- & Entscheidungsframeworks</span>
+          <span class="px-3 py-1 bg-white border border-gray-300 rounded-full text-xs text-gray-700">Moderation strategischer Konflikte</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
