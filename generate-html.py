@@ -216,12 +216,12 @@ class HTMLGenerator:
         return groups
 
     def _template(self, sections_by_group: Dict) -> str:
-        """HTML template with Brand Kit styling"""
+        """Load template.html and replace placeholders with generated content"""
         lang_attr = 'en' if self.lang == 'en' else 'de'
         name = self._html_escape(self.data['header'].get('name', ''))
         title = self._html_escape(self.data['header'].get('title', ''))
 
-        # Generate section HTML for each group
+        # Generate section HTML for each zone
         white1_html = self._generate_header() + '\n'.join(
             self._generate_section(s) for s in sections_by_group['white1']
         )
@@ -232,228 +232,30 @@ class HTMLGenerator:
             self._generate_section(s) for s in sections_by_group['white2']
         )
 
-        return f'''<!DOCTYPE html>
-<html lang="{lang_attr}">
-<!--
-  CV Export
-  Generated: {self._get_timestamp()}
-  Source: Markdown CV file
-  Photo: {self.photo}
-  Generator: generate-html.py
-  Design: Zinc-Teal Brand Kit (Geist fonts)
--->
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{name} – {title}</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {{
-      theme: {{
-        extend: {{
-          fontFamily: {{
-            sans: ['Geist', 'system-ui', '-apple-system', 'sans-serif'],
-            mono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
-            pixel: ['Geist Pixel', 'ui-monospace', 'SFMono-Regular', 'monospace'],
-          }},
-        }},
-      }},
-    }}
-  </script>
-  <style>
-    /* === Lokale Fonts === */
-    @font-face {{
-      font-family: 'Geist';
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
-      src: url('assets/fonts/Geist-Regular.woff2') format('woff2');
-    }}
-    @font-face {{
-      font-family: 'Geist';
-      font-style: normal;
-      font-weight: 500;
-      font-display: swap;
-      src: url('assets/fonts/Geist-Medium.woff2') format('woff2');
-    }}
-    @font-face {{
-      font-family: 'Geist';
-      font-style: normal;
-      font-weight: 600;
-      font-display: swap;
-      src: url('assets/fonts/Geist-SemiBold.woff2') format('woff2');
-    }}
-    @font-face {{
-      font-family: 'Geist';
-      font-style: normal;
-      font-weight: 700;
-      font-display: swap;
-      src: url('assets/fonts/Geist-Bold.woff2') format('woff2');
-    }}
-    @font-face {{
-      font-family: 'Geist Mono';
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
-      src: url('assets/fonts/GeistMono-Regular.woff2') format('woff2');
-    }}
-    @font-face {{
-      font-family: 'Geist Mono';
-      font-style: normal;
-      font-weight: 500;
-      font-display: swap;
-      src: url('assets/fonts/GeistMono-Medium.woff2') format('woff2');
-    }}
-    @font-face {{
-      font-family: 'Geist Mono';
-      font-style: normal;
-      font-weight: 600;
-      font-display: swap;
-      src: url('assets/fonts/GeistMono-SemiBold.woff2') format('woff2');
-    }}
-    @font-face {{
-      font-family: 'Geist Pixel';
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
-      src: url('assets/fonts/GeistPixel-Square.woff2') format('woff2');
-    }}
+        # Load template relative to this script
+        template_path = Path(__file__).parent / 'template.html'
+        html = template_path.read_text(encoding='utf-8')
 
-    .ref-card {{
-      background: white;
-      border: 1px solid #e4e4e7;
-      border-radius: 8px;
-      padding: 1.4rem 1.5rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }}
-    .ref-card:hover {{
-      border-color: #a1a1aa;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-    }}
-    .ref-tag {{
-      font-family: 'Geist', system-ui, sans-serif;
-      font-size: 0.68rem;
-      font-weight: 500;
-      text-transform: none;
-      letter-spacing: 0.01em;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      display: inline-block;
-    }}
-    .no-break {{
-      break-inside: avoid;
-    }}
-    @page {{
-      size: A4;
-      margin: 10mm 18mm;
-    }}
-    @media print {{
-      .no-print {{ display: none !important; }}
-      body {{
-        background: white !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }}
-      div {{
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }}
-      .page-break {{ break-before: page; }}
-    }}
-  </style>
-</head>
-<body style="background: #fafafa; -webkit-print-color-adjust: exact; print-color-adjust: exact;" class="font-sans text-zinc-700 text-[0.95rem] print:text-[0.7rem] leading-relaxed">
+        replacements = {
+            '{{HEAD_TITLE}}':        f'{name} \u2013 {title}',
+            '{{GENERATED}}':         self._get_timestamp(),
+            '{{PHOTO}}':             self.photo,
+            '{{LANG}}':              lang_attr,
+            '{{ZONE_WHITE1}}':       white1_html,
+            '{{ZONE_ZINC50}}':       zinc50_html,
+            '{{ZONE_WHITE2}}':       white2_html,
+            '{{PRINT_LABEL}}':       self.labels['print'],
+            '{{SHARE_LABEL}}':       self.labels['share'],
+            '{{COPY_LINK_LABEL}}':   self.labels['copy_link'],
+            '{{SHARE_EMAIL_LABEL}}': self.labels['share_email'],
+            '{{LINK_COPIED_LABEL}}': self.labels['link_copied'],
+        }
 
-  <!-- Action Bar -->
-  <div class="fixed top-0 right-0 flex justify-end gap-2 no-print p-3 pr-5">
-    <button onclick="window.print()"
-      class="flex gap-2 bg-zinc-100 hover:bg-zinc-200 text-xs px-2.5 py-1.5 border border-zinc-200 rounded text-zinc-700 hover:text-zinc-900 hover:border-zinc-700 cursor-pointer transition-colors">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-        <path d="M17 2C17.5523 2 18 2.44772 18 3V7H21C21.5523 7 22 7.44772 22 8V18C22 18.5523 21.5523 19 21 19H18V21C18 21.5523 17.5523 22 17 22H7C6.44772 22 6 21.5523 6 21V19H3C2.44772 19 2 18.5523 2 18V8C2 7.44772 2.44772 7 3 7H6V3C6 2.44772 6.44772 2 7 2H17ZM16 17H8V20H16V17ZM20 9H4V17H6V16C6 15.4477 6.44772 15 7 15H17C17.5523 15 18 15.4477 18 16V17H20V9ZM8 10V12H5V10H8ZM16 4H8V7H16V4Z"></path>
-      </svg>
-      {self.labels['print']}
-    </button>
-    <button onclick="openShareDialog()"
-      class="flex gap-2 bg-zinc-100 hover:bg-zinc-200 text-xs px-2.5 py-1.5 border border-zinc-200 rounded text-zinc-700 hover:text-zinc-900 hover:border-zinc-400 cursor-pointer transition-colors">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-        <path d="M12 2.58582L18.2071 8.79292L16.7929 10.2071L13 6.41424V16H11V6.41424L7.20711 10.2071L5.79289 8.79292L12 2.58582ZM3 18V14H5V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V14H21V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18Z"></path>
-      </svg>
-      {self.labels['share']}
-    </button>
-  </div>
+        for placeholder, value in replacements.items():
+            html = html.replace(placeholder, value)
 
-  <!-- ZONE 1: bg-white (Header + Profil) -->
-  <div class="bg-white">
-    <div class="mx-auto px-8 pt-12 pb-2 max-w-[210mm]">
-{white1_html}
-    </div>
-  </div>
+        return html
 
-  <!-- ZONE 2: bg-zinc-50 (Berufserfahrung + Ausbildung) -->
-  <div class="bg-zinc-50 print:bg-white">
-    <div class="mx-auto px-8 py-10 print:py-0 max-w-[210mm]">
-{zinc50_html}
-    </div>
-  </div>
-
-  <!-- ZONE 3: bg-white (Schwerpunkte + Haltung + Sprachen) -->
-  <div class="bg-white">
-    <div class="mx-auto px-8 py-12 max-w-[210mm]">
-{white2_html}
-
-      <!-- Share Dialog -->
-      <div id="share-dialog" class="hidden fixed inset-0 z-50 no-print">
-        <div class="absolute inset-0 bg-black/30" onclick="closeShareDialog()"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl p-6 w-80">
-          <div class="flex justify-between items-center mb-4">
-            <h3 class="font-medium text-zinc-900 text-sm">{self.labels['share']}</h3>
-            <button onclick="closeShareDialog()"
-              class="text-zinc-500 hover:text-zinc-700 text-xl leading-none cursor-pointer bg-transparent border-none">&times;</button>
-          </div>
-          <div class="space-y-2">
-            <button onclick="copyLink()"
-              class="w-full text-left px-3 py-2 border border-zinc-200 rounded hover:bg-zinc-50 text-sm text-zinc-700 cursor-pointer bg-transparent transition-colors">
-              {self.labels['copy_link']}
-            </button>
-            <button onclick="shareEmail()"
-              class="w-full text-left px-3 py-2 border border-zinc-200 rounded hover:bg-zinc-50 text-sm text-zinc-700 cursor-pointer bg-transparent transition-colors">
-              {self.labels['share_email']}
-            </button>
-          </div>
-          <p id="copy-feedback" class="hidden text-xs text-teal-600 mt-3">{self.labels['link_copied']}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function openShareDialog() {{
-      if (navigator.share) {{
-        navigator.share({{ title: document.title, url: window.location.href }}).catch(function () {{}});
-      }} else {{
-        document.getElementById('share-dialog').classList.remove('hidden');
-      }}
-    }}
-    function closeShareDialog() {{
-      document.getElementById('share-dialog').classList.add('hidden');
-      document.getElementById('copy-feedback').classList.add('hidden');
-    }}
-    function copyLink() {{
-      navigator.clipboard.writeText(window.location.href).then(function () {{
-        var feedback = document.getElementById('copy-feedback');
-        feedback.classList.remove('hidden');
-        setTimeout(function () {{ feedback.classList.add('hidden'); }}, 2000);
-      }});
-    }}
-    function shareEmail() {{
-      window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href);
-      closeShareDialog();
-    }}
-  </script>
-
-</body>
-</html>
-'''
 
     def _generate_section(self, section: Dict) -> str:
         """Dispatch to correct section generator"""
