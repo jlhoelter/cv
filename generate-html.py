@@ -354,11 +354,15 @@ class HTMLGenerator:
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }}
+      div {{
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }}
       .page-break {{ break-before: page; }}
     }}
   </style>
 </head>
-<body style="background: #fafafa;" class="font-sans text-zinc-700 text-[0.95rem] print:text-[0.7rem] leading-relaxed">
+<body style="background: #fafafa; -webkit-print-color-adjust: exact; print-color-adjust: exact;" class="font-sans text-zinc-700 text-[0.95rem] print:text-[0.7rem] leading-relaxed">
 
   <!-- Action Bar -->
   <div class="fixed top-0 right-0 flex justify-end gap-2 no-print p-3 pr-5">
