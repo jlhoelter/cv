@@ -271,7 +271,7 @@ class HTMLGenerator:
     def _render_card(self, title: str, description: str) -> str:
         """Render a ref-card (used in Schwerpunkte and Haltung)"""
         return (
-            f'          <div class="ref-card bg-zinc-50 no-break">\n'
+            f'          <div class="ref-card no-break">\n'
             f'            <p class="font-medium text-zinc-900 text-[1rem] mb-2">{title}</p>\n'
             f'            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">{description}</p>\n'
             f'          </div>'
@@ -567,7 +567,7 @@ class HTMLGenerator:
                 pills = []
                 for b in sub.get('bullets', []):
                     escaped_b = self._html_escape(b)
-                    pills.append(f'            <span class="ref-tag bg-zinc-100 text-zinc-700">{escaped_b}</span>')
+                    pills.append(f'            <span class="ref-tag">{escaped_b}</span>')
                 pills_html = '\n'.join(pills)
                 methoden_title = self._html_escape(sub['title'])
                 methoden_html = f'''        <div class="no-break">
