@@ -24,6 +24,7 @@ class CVParser:
             'header': self._parse_header(lines),
             'sections': self._parse_sections(lines)
         }
+        self._validate(data)
         return data
 
     def _parse_header(self, lines: List[str]) -> Dict[str, str]:
@@ -139,6 +140,24 @@ class CVParser:
 
         return sections
 
+    def _validate(self, data: Dict) -> None:
+        """Warn about likely markdown format issues (writes to stderr, never stops generation)"""
+        for section in data['sections']:
+            if section['type'] == 'berufserfahrung':
+                for sub in section['subsections']:
+                    if not sub.get('job_title'):
+                        print(f"⚠  Kein Jobtitel in Station: {sub['title']}", file=sys.stderr)
+                    if not sub.get('period'):
+                        print(f"⚠  Kein Zeitraum in Station: {sub['title']}", file=sys.stderr)
+            elif section['type'] == 'ausbildung':
+                for sub in section['subsections']:
+                    has_period = sub.get('period') or any(
+                        '–' in l or re.match(r'\d{4}', l)
+                        for l in sub.get('content', [])
+                    )
+                    if not has_period:
+                        print(f"⚠  Kein Zeitraum in Ausbildung: {sub['title']}", file=sys.stderr)
+
     def _section_type(self, title: str) -> str:
         """Determine section type from title"""
         title_lower = title.lower()
@@ -156,6 +175,40 @@ class CVParser:
             return 'sprachen'
         else:
             return 'generic'
+
+
+# SVG icon strings for contact badges
+_SVG_LOCATION = (
+    '<svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">'
+    '<path d="M12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604'
+    'C21.8787 8.15076 21.8787 13.8492 18.364 17.364L12 23.7279ZM16.9497 15.9497C19.6834 13.2161 19.6834 8.78392 16.9497 6.05025'
+    'C14.2161 3.31658 9.78392 3.31658 7.05025 6.05025C4.31658 8.78392 4.31658 13.2161 7.05025 15.9497L12 20.8995L16.9497 15.9497Z'
+    'M12 13C10.8954 13 10 12.1046 10 11C10 9.89543 10.8954 9 12 9C13.1046 9 14 9.89543 14 11C14 12.1046 13.1046 13 12 13Z"></path>'
+    '</svg>'
+)
+_SVG_EMAIL = (
+    '<svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">'
+    '<path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3Z'
+    'M20 7.23792L12.0718 14.338L4 7.21594V19H20V7.23792ZM4.51146 5L12.0619 11.662L19.501 5H4.51146Z"></path>'
+    '</svg>'
+)
+_SVG_PHONE = (
+    '<svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">'
+    '<path d="M7 4V20H17V4H7ZM6 2H18C18.5523 2 19 2.44772 19 3V21C19 21.5523 18.5523 22 18 22H6C5.44772 22 5 21.5523 5 21V3'
+    'C5 2.44772 5.44772 2 6 2ZM12 17C12.5523 17 13 17.4477 13 18C13 18.5523 12.5523 19 12 19C11.4477 19 11 18.5523 11 18'
+    'C11 17.4477 11.4477 17 12 17Z"></path>'
+    '</svg>'
+)
+_SVG_LINKEDIN = (
+    '<svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">'
+    '<path d="M4.00098 3H20.001C20.5533 3 21.001 3.44772 21.001 4V20C21.001 20.5523 20.5533 21 20.001 21H4.00098'
+    'C3.44869 21 3.00098 20.5523 3.00098 20V4C3.00098 3.44772 3.44869 3 4.00098 3ZM5.00098 5V19H19.001V5H5.00098Z'
+    'M7.50098 9C6.67255 9 6.00098 8.32843 6.00098 7.5C6.00098 6.67157 6.67255 6 7.50098 6C8.3294 6 9.00098 6.67157 9.00098 7.5'
+    'C9.00098 8.32843 8.3294 9 7.50098 9ZM6.50098 10H8.50098V17.5H6.50098V10Z'
+    'M12.001 10.4295C12.5854 9.86534 13.2665 9.5 14.001 9.5C16.072 9.5 17.501 11.1789 17.501 13.25V17.5H15.501V13.25'
+    'C15.501 12.2835 14.7175 11.5 13.751 11.5C12.7845 11.5 12.001 12.2835 12.001 13.25V17.5H10.001V10H12.001V10.4295Z"></path>'
+    '</svg>'
+)
 
 
 class HTMLGenerator:
@@ -194,6 +247,35 @@ class HTMLGenerator:
     def _html_escape(self, text: str) -> str:
         """Escape HTML special characters"""
         return text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+
+    def _badge(self, svg: str, text: str, href: str = '') -> str:
+        """Render a teal contact badge – linked (href) or plain span"""
+        base = 'flex items-center gap-1.5 text-teal-600 py-1 px-3 rounded-md bg-teal-50 border border-teal-100'
+        hover = ' hover:text-teal-700 hover:bg-teal-100 no-underline transition-colors duration-200'
+        if href:
+            return (
+                f'              <a href="{href}"\n'
+                f'                class="{base}{hover}">\n'
+                f'                {svg}\n'
+                f'                {text}\n'
+                f'              </a>'
+            )
+        else:
+            return (
+                f'              <span class="{base}">\n'
+                f'                {svg}\n'
+                f'                {text}\n'
+                f'              </span>'
+            )
+
+    def _render_card(self, title: str, description: str) -> str:
+        """Render a ref-card (used in Schwerpunkte and Haltung)"""
+        return (
+            f'          <div class="ref-card bg-zinc-50 no-break">\n'
+            f'            <p class="font-medium text-zinc-900 text-[1rem] mb-2">{title}</p>\n'
+            f'            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">{description}</p>\n'
+            f'          </div>'
+        )
 
     def generate(self) -> str:
         """Generate complete HTML"""
@@ -287,46 +369,23 @@ class HTMLGenerator:
 
         if 'location' in contact:
             loc = self._html_escape(contact['location'])
-            badges.append(f'''              <span class="flex items-center gap-1.5 text-teal-600 py-1 px-3 rounded-md bg-teal-50 border border-teal-100">
-                <svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                  <path d="M12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364L12 23.7279ZM16.9497 15.9497C19.6834 13.2161 19.6834 8.78392 16.9497 6.05025C14.2161 3.31658 9.78392 3.31658 7.05025 6.05025C4.31658 8.78392 4.31658 13.2161 7.05025 15.9497L12 20.8995L16.9497 15.9497ZM12 13C10.8954 13 10 12.1046 10 11C10 9.89543 10.8954 9 12 9C13.1046 9 14 9.89543 14 11C14 12.1046 13.1046 13 12 13Z"></path>
-                </svg>
-                {loc}
-              </span>''')
+            badges.append(self._badge(_SVG_LOCATION, loc))
 
         if 'email' in contact:
             email = self._html_escape(contact['email'])
-            badges.append(f'''              <a href="mailto:{email}"
-                class="flex items-center gap-1.5 text-teal-600 hover:text-teal-700 py-1 px-3 bg-teal-50 hover:bg-teal-100 rounded-md no-underline transition-colors duration-200 border border-teal-100">
-                <svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                  <path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM20 7.23792L12.0718 14.338L4 7.21594V19H20V7.23792ZM4.51146 5L12.0619 11.662L19.501 5H4.51146Z"></path>
-                </svg>
-                {email}
-              </a>''')
+            badges.append(self._badge(_SVG_EMAIL, email, href=f'mailto:{email}'))
 
         if 'phone' in contact:
             phone = self._html_escape(contact['phone'])
             phone_href = phone.replace(' ', '')
-            badges.append(f'''              <a href="tel:{phone_href}"
-                class="flex items-center gap-1.5 text-teal-600 hover:text-teal-700 py-1 px-3 bg-teal-50 hover:bg-teal-100 rounded-md no-underline transition-colors duration-200 border border-teal-100">
-                <svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                  <path d="M7 4V20H17V4H7ZM6 2H18C18.5523 2 19 2.44772 19 3V21C19 21.5523 18.5523 22 18 22H6C5.44772 22 5 21.5523 5 21V3C5 2.44772 5.44772 2 6 2ZM12 17C12.5523 17 13 17.4477 13 18C13 18.5523 12.5523 19 12 19C11.4477 19 11 18.5523 11 18C11 17.4477 11.4477 17 12 17Z"></path>
-                </svg>
-                {phone}
-              </a>''')
+            badges.append(self._badge(_SVG_PHONE, phone, href=f'tel:{phone_href}'))
 
         if 'linkedin' in contact:
             linkedin_url = contact['linkedin']
             if not linkedin_url.startswith('http'):
                 linkedin_url = f'https://{linkedin_url}'
             linkedin_url = self._html_escape(linkedin_url)
-            badges.append(f'''              <a href="{linkedin_url}"
-                class="flex items-center gap-1.5 text-teal-600 hover:text-teal-700 py-1 px-3 bg-teal-50 hover:bg-teal-100 rounded-md no-underline transition-colors duration-200 border border-teal-100">
-                <svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                  <path d="M4.00098 3H20.001C20.5533 3 21.001 3.44772 21.001 4V20C21.001 20.5523 20.5533 21 20.001 21H4.00098C3.44869 21 3.00098 20.5523 3.00098 20V4C3.00098 3.44772 3.44869 3 4.00098 3ZM5.00098 5V19H19.001V5H5.00098ZM7.50098 9C6.67255 9 6.00098 8.32843 6.00098 7.5C6.00098 6.67157 6.67255 6 7.50098 6C8.3294 6 9.00098 6.67157 9.00098 7.5C9.00098 8.32843 8.3294 9 7.50098 9ZM6.50098 10H8.50098V17.5H6.50098V10ZM12.001 10.4295C12.5854 9.86534 13.2665 9.5 14.001 9.5C16.072 9.5 17.501 11.1789 17.501 13.25V17.5H15.501V13.25C15.501 12.2835 14.7175 11.5 13.751 11.5C12.7845 11.5 12.001 12.2835 12.001 13.25V17.5H10.001V10H12.001V10.4295Z"></path>
-                </svg>
-                LinkedIn
-              </a>''')
+            badges.append(self._badge(_SVG_LINKEDIN, 'LinkedIn', href=linkedin_url))
 
         badges_html = '\n'.join(badges)
 
@@ -520,10 +579,7 @@ class HTMLGenerator:
             else:
                 sub_title = self._html_escape(sub['title'])
                 description = self._html_escape(' '.join(sub.get('content', [])))
-                cards_html.append(f'''          <div class="ref-card bg-zinc-50 no-break">
-            <p class="font-medium text-zinc-900 text-[1rem] mb-2">{sub_title}</p>
-            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">{description}</p>
-          </div>''')
+                cards_html.append(self._render_card(sub_title, description))
 
         cards_section = '\n'.join(cards_html)
         grid_html = f'        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">\n{cards_section}\n        </div>\n' if cards_html else ''
@@ -551,10 +607,7 @@ class HTMLGenerator:
         for sub in section['subsections']:
             sub_title = self._html_escape(sub['title'])
             description = self._html_escape(' '.join(sub.get('content', [])))
-            cards_html.append(f'''          <div class="ref-card bg-zinc-50 no-break">
-            <p class="font-medium text-zinc-900 text-[1rem] mb-2">{sub_title}</p>
-            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">{description}</p>
-          </div>''')
+            cards_html.append(self._render_card(sub_title, description))
 
         cards_section = '\n'.join(cards_html)
 
