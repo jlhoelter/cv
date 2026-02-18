@@ -21,8 +21,8 @@ Dabei verbinde ich analytische Schärfe mit einer klaren, menschenorientierten F
 
 ## Berufserfahrung
 
-### **ABS Safety GmbH**  
-**Head of Digital Products**  
+### ABS Safety GmbH
+**Head of Digital Products**
 *Jan 2021 – heute | Essen, Köln, Kevelaer*
 
 Gesamtverantwortung für digitale Produktinitiativen in einem mittelständischen Industrieunternehmen mit starkem Kerngeschäft und gewachsenen organisatorischen Strukturen.
@@ -34,8 +34,8 @@ Gesamtverantwortung für digitale Produktinitiativen in einem mittelständischen
 
 ---
 
-### **codecentric AG**  
-**Head of Digitization Labs**  
+### codecentric AG
+**Head of Digitization Labs**
 *Mai 2019 – Jun 2020 | Solingen*
 
  Leitung von drei interdisziplinären Produktteams im Kontext von „Product Discovery as a Service“ für Enterprise-Kunden.
@@ -47,7 +47,8 @@ Gesamtverantwortung für digitale Produktinitiativen in einem mittelständischen
 
 ---
 
-### **Innovation Strategist (the black frame)**  
+### the black frame
+**Innovation Strategist**
 *Jul 2017 – Apr 2019 | Dortmund*
 
 - Mitarbeit in einer strategischen Innovationseinheit mit Fokus auf Frühphasen-Innovation, Ideation und Exploration neuer Geschäftsmodelle.  
@@ -56,8 +57,8 @@ Gesamtverantwortung für digitale Produktinitiativen in einem mittelständischen
 
 ---
 
-### **IT Consultant**  
-**codecentric AG**  
+### codecentric AG
+**IT Consultant**
 *Apr 2013 – Jun 2017 | Solingen*
 
 - Tätigkeit als IT-Consultant mit Schwerpunkt Softwareentwicklung, überwiegend im Versicherungsumfeld.  
@@ -66,8 +67,8 @@ Gesamtverantwortung für digitale Produktinitiativen in einem mittelständischen
 
 ---
 
-### **CRON Systems-Automation GmbH**  
-**Softwareentwickler**  
+### CRON Systems-Automation GmbH
+**Softwareentwickler**
 *Feb 2010 – Mär 2013*
 
 - Softwareentwicklung im Umfeld industrieller Automatisierungssysteme.  

@@ -1,6 +1,6 @@
 # CV – Jan Hölter
 
-Minimalistischer HTML-CV-Generator. Markdown rein, druckbares HTML raus.
+HTML-CV-Generator mit Zinc-Teal Brand Kit. Markdown rein, druckbares HTML raus.
 
 **Live:** https://jlhoelter.github.io/cv/
 
@@ -26,12 +26,22 @@ open index.html
 ```
 cv/
 ├── CV_Jan_Hoelter_final.md    # Source of truth
-├── Jan_Hoelter_Foto.jpeg      # Profilfoto
 ├── generate-html.py           # Generator (Python, keine Dependencies)
 ├── generate-html.sh           # Generate Script
 ├── publish-cv.sh              # Publish zu GitHub Pages
 ├── index.html                 # Generiertes HTML (Output)
-├── cv-complete-final.html     # Reference Template (Design-Referenz)
+├── jan-cv-reference.html      # Design-Referenz (Brand Kit)
+├── assets/
+│   ├── Jan_Hoelter_Foto.jpeg  # Profilfoto
+│   └── fonts/                 # Lokale Geist-Fonts (WOFF2)
+│       ├── Geist-Regular.woff2
+│       ├── Geist-Medium.woff2
+│       ├── Geist-SemiBold.woff2
+│       ├── Geist-Bold.woff2
+│       ├── GeistMono-Regular.woff2
+│       ├── GeistMono-Medium.woff2
+│       ├── GeistMono-SemiBold.woff2
+│       └── GeistPixel-Square.woff2
 └── README.md
 ```
 
@@ -73,7 +83,7 @@ cd tracks/jobsuche/cv
 ```markdown
 # Name
 **Title**
-*Tagline*
+*Tagline*                          ← wird als Hero Statement angezeigt
 
 Köln, Deutschland
 📧 email@example.com
@@ -92,7 +102,7 @@ Paragraph 2...
 
 ## Berufserfahrung
 
-### Firma Name
+### Firma Name                     ← kein ** im Titel
 **Position**
 *Zeitraum | Ort*
 
@@ -140,20 +150,22 @@ Beschreibung...
 ```
 
 ### Besonderheiten
+- **Tagline** (`*italic*` im Header) → großes Hero Statement über dem Profil
+- **Berufserfahrung:** `### Firma` + `**Jobtitel**` → Ausgabe `"Jobtitel, Firma"`; Zeitraum und Ort aus `*Zeitraum | Ort*`
 - **Schwerpunkte:** Subsections → 2-Spalten Cards; "Methoden" → Pills
-- **Haltung:** Subsections → 2×2 Grid Cards
+- **Haltung:** Subsections → 2×2 Grid Cards; Section Label triggert Seitenumbruch
 - **Sprachen:** Bullets → einzelner Text mit `·` Separator
-- **Berufserfahrung:** Beschreibung nach `*Zeitraum*` → `text-xs` Paragraph vor Bullets
 
 ---
 
 ## Design
 
-- **Font:** Inter (Google Fonts)
-- **CSS:** Tailwind via CDN (kein Build-Step)
-- **Layout:** max-w-3xl, Shadow-Container, A4-optimiert
-- **Print:** `@page { size: A4; margin: 12mm 15mm; }`
-- **Page Breaks:** Sections bleiben zusammen (`no-break`), Berufserfahrung darf zwischen Jobs umbrechen
+- **Font:** Geist (lokal, WOFF2) – kein CDN
+- **Farben:** Zinc/Teal – `bg-zinc-50` Hintergrund, `teal-600` Akzente
+- **CSS:** Tailwind via CDN + Custom `.ref-card` / `.ref-tag`
+- **Layout:** `max-w-[210mm]` (A4-exakt), drei Hintergrund-Zonen
+- **Print:** `@page { size: A4; margin: 10mm 18mm; }`, `print:text-[0.7rem]`
+- **Design-Referenz:** `jan-cv-reference.html`
 
 ---
 
@@ -166,7 +178,7 @@ chmod +x generate-html.sh publish-cv.sh
 
 **Fehlende Sektionen**
 - `##` für Sektionen, `###` für Subsektionen
-- Kein `**` im `###`-Titel (z.B. `### Firma Name`, nicht `### **Firma Name**`)
+- Kein `**` im `###`-Titel: `### Firma Name`, nicht `### **Firma Name**`
 - Bullets mit `- ` (Dash + Space)
 
 **Print: Seite bricht falsch um**

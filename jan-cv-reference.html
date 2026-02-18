@@ -1,0 +1,592 @@
+<!--
+  CV – Jan Hölter
+  Datei: jan-cv.html
+  Design System: Zinc-Teal (neutral-kühl), Geist-only
+  Brand Kit: brand-kit.html
+  Portrait: Jan_Hoelter_Foto.jpeg
+  Quelle: https://github.com/jlhoelter/cv
+  Stand: 2026-02-17
+-->
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jan Hölter – Product & Leadership Executive</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Geist', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+            pixel: ['Geist Pixel', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    /* === Lokale Fonts === */
+    @font-face {
+      font-family: 'Geist';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/Geist-Regular.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Geist';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('assets/fonts/Geist-Medium.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Geist';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('assets/fonts/Geist-SemiBold.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Geist';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('assets/fonts/Geist-Bold.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Geist Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/GeistMono-Regular.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Geist Mono';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('assets/fonts/GeistMono-Medium.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Geist Mono';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('assets/fonts/GeistMono-SemiBold.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'Geist Pixel';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/GeistPixel-Square.woff2') format('woff2');
+    }
+
+    .ref-card {
+      background: white;
+      border: 1px solid #e4e4e7;
+      border-radius: 8px;
+      padding: 1.4rem 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .ref-card:hover {
+      border-color: #a1a1aa;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .ref-tag {
+      font-family: 'Geist', system-ui, sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0.01em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .no-break {
+      break-inside: avoid;
+    }
+
+    @page {
+      size: A4;
+      margin: 10mm 18mm;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+
+      body {
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page-break {
+        break-before: page;
+      }
+    }
+  </style>
+</head>
+
+<body style="background: #fafafa;" class="font-sans text-zinc-700 text-[0.95rem] print:text-[0.7rem] leading-relaxed">
+
+  <!-- Action Bar -->
+  <div class="fixed top-0 right-0 flex justify-end gap-2 no-print p-3 pr-5">
+    <button onclick="window.print()"
+      class="flex gap-2 bg-zinc-100 hover:bg-zinc-200 text-xs px-2.5 py-1.5 border border-zinc-200 rounded text-zinc-700 hover:text-zinc-900 hover:border-zinc-700 cursor-pointer transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+        <path
+          d="M17 2C17.5523 2 18 2.44772 18 3V7H21C21.5523 7 22 7.44772 22 8V18C22 18.5523 21.5523 19 21 19H18V21C18 21.5523 17.5523 22 17 22H7C6.44772 22 6 21.5523 6 21V19H3C2.44772 19 2 18.5523 2 18V8C2 7.44772 2.44772 7 3 7H6V3C6 2.44772 6.44772 2 7 2H17ZM16 17H8V20H16V17ZM20 9H4V17H6V16C6 15.4477 6.44772 15 7 15H17C17.5523 15 18 15.4477 18 16V17H20V9ZM8 10V12H5V10H8ZM16 4H8V7H16V4Z">
+        </path>
+      </svg>
+      Drucken
+    </button>
+    <button onclick="openShareDialog()"
+      class="flex gap-2 bg-zinc-100 hover:bg-zinc-200 text-xs px-2.5 py-1.5 border border-zinc-200 rounded text-zinc-700 hover:text-zinc-900 hover:border-zinc-400 cursor-pointer transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+        <path
+          d="M12 2.58582L18.2071 8.79292L16.7929 10.2071L13 6.41424V16H11V6.41424L7.20711 10.2071L5.79289 8.79292L12 2.58582ZM3 18V14H5V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V14H21V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18Z">
+        </path>
+      </svg>
+      Teilen
+    </button>
+  </div>
+  <!-- WRAP -->
+  <div class="bg-white">
+    <div class="mx-auto px-8 pt-12 pb-2 max-w-[210mm]">
+
+
+      <!-- ============================================ -->
+      <!-- HEADER -->
+      <!-- ============================================ -->
+      <header class="mb-10 print:p-0 ">
+        <div class="flex items-start gap-8">
+
+          <!-- Portrait -->
+          <img src="assets/Jan_Hoelter_Foto.jpeg" alt="Jan Hölter"
+            class="w-[110px] h-[110px] rounded-full object-cover object-top flex-shrink-0 grayscale"
+            style="-webkit-print-color-adjust: exact; print-color-adjust: exact;">
+
+          <div class="flex-1">
+            <h1 class="text-[1.5em] font-medium text-zinc-900 mb-3 leading-[1.1]">Jan Hölter</h1>
+            <p class="text-[1rem] text-zinc-700">Product &amp; Leadership Executive</p>
+
+            <!-- Contact -->
+            <div class="flex flex-wrap gap-x-2 gap-y-2 text-[0.75rem] text-zinc-500 mt-6">
+              <span class="flex items-center gap-1.5 text-teal-600 py-1 px-3 rounded-md bg-teal-50 border-teal-100">
+                <svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14"
+                  fill="currentColor">
+                  <path
+                    d="M12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364L12 23.7279ZM16.9497 15.9497C19.6834 13.2161 19.6834 8.78392 16.9497 6.05025C14.2161 3.31658 9.78392 3.31658 7.05025 6.05025C4.31658 8.78392 4.31658 13.2161 7.05025 15.9497L12 20.8995L16.9497 15.9497ZM12 13C10.8954 13 10 12.1046 10 11C10 9.89543 10.8954 9 12 9C13.1046 9 14 9.89543 14 11C14 12.1046 13.1046 13 12 13Z">
+                  </path>
+                </svg>
+                Köln, Deutschland
+              </span>
+              <a href="mailto:j.hoelter85@gmail.com"
+                class="flex items-center gap-1.5 text-teal-600 hover:text-teal-700 py-1 px-3 bg-teal-50 hover:bg-teal-100 rounded-md no-underline transition-colors duration-200">
+                <svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14"
+                  fill="currentColor">
+                  <path
+                    d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM20 7.23792L12.0718 14.338L4 7.21594V19H20V7.23792ZM4.51146 5L12.0619 11.662L19.501 5H4.51146Z">
+                  </path>
+                </svg>
+                j.hoelter85@gmail.com
+              </a>
+              <a href="tel:+491735448963"
+                class="flex items-center gap-1.5 text-teal-600 hover:text-teal-700 py-1 px-3 bg-teal-50 hover:bg-teal-100 rounded-md no-underline transition-colors duration-200">
+                <svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14"
+                  fill="currentColor">
+                  <path
+                    d="M7 4V20H17V4H7ZM6 2H18C18.5523 2 19 2.44772 19 3V21C19 21.5523 18.5523 22 18 22H6C5.44772 22 5 21.5523 5 21V3C5 2.44772 5.44772 2 6 2ZM12 17C12.5523 17 13 17.4477 13 18C13 18.5523 12.5523 19 12 19C11.4477 19 11 18.5523 11 18C11 17.4477 11.4477 17 12 17Z">
+                  </path>
+                </svg>
+                +49 173 5448963
+              </a>
+              <a href="https://www.linkedin.com/in/jan-hölter-89b538109"
+                class="flex items-center gap-1.5 text-teal-600 hover:text-teal-700 py-1 px-3 bg-teal-50 hover:bg-teal-100 rounded-md no-underline transition-colors duration-200">
+                <svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14"
+                  fill="currentColor">
+                  <path
+                    d="M4.00098 3H20.001C20.5533 3 21.001 3.44772 21.001 4V20C21.001 20.5523 20.5533 21 20.001 21H4.00098C3.44869 21 3.00098 20.5523 3.00098 20V4C3.00098 3.44772 3.44869 3 4.00098 3ZM5.00098 5V19H19.001V5H5.00098ZM7.50098 9C6.67255 9 6.00098 8.32843 6.00098 7.5C6.00098 6.67157 6.67255 6 7.50098 6C8.3294 6 9.00098 6.67157 9.00098 7.5C9.00098 8.32843 8.3294 9 7.50098 9ZM6.50098 10H8.50098V17.5H6.50098V10ZM12.001 10.4295C12.5854 9.86534 13.2665 9.5 14.001 9.5C16.072 9.5 17.501 11.1789 17.501 13.25V17.5H15.501V13.25C15.501 12.2835 14.7175 11.5 13.751 11.5C12.7845 11.5 12.001 12.2835 12.001 13.25V17.5H10.001V10H12.001V10.4295Z">
+                  </path>
+                </svg>
+                LinkedIn
+              </a>
+            </div>
+
+
+          </div>
+      </header>
+
+      <!-- ============================================ -->
+      <!-- HERO STATEMENT + PROFIL -->
+      <!-- ============================================ -->
+      <section class="mb-10 ">
+        <p class="text-zinc-900 leading-[1.35] text-[1.4em] font-medium">
+          Klarheit, Fokus und Entscheidungsfähigkeit in komplexen
+          Produkt&shy;organisationen schaffen.
+        </p>
+        <div class="text-zinc-700 max-w-[44em] text-[1em] leading-relaxed mt-4 space-y-3">
+          <p>Ich gestalte Produktorganisationen in komplexen, gewachsenen Strukturen – insbesondere dort, wo
+            strategische
+            Zielbilder, Priorisierung und Entscheidungslogiken nicht selbstverständlich sind.</p>
+          <p>Mein Schwerpunkt liegt auf der strukturellen Verankerung von Outcome-Orientierung: klare Zieldefinition,
+            explizite Entscheidungsräume, transparente Priorisierung und belastbare Eskalationsmechanismen.
+            Produktarbeit
+            verstehe ich als systematische Reduktion von Unsicherheit durch klare Entscheidungen und konsequente
+            Fokussierung.</p>
+          <p>Dabei verbinde ich analytische Schärfe mit einer klaren, menschenorientierten Führungsarbeit. Ich mache
+            Zielkonflikte explizit, strukturiere Entscheidungsoptionen und schaffe Orientierung – ohne die
+            individuellen
+            Perspektiven und Motivationen der Menschen aus dem Blick zu verlieren, die diese Entscheidungen tragen und
+            umsetzen. Leistungsfähigkeit entsteht für mich dort, wo Klarheit, Verantwortung und Vertrauen
+            zusammenkommen.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+  <!-- /WRAP -->
+
+  <!-- WRAP -->
+  <div class="bg-zinc-50 print:bg-white">
+    <div class="mx-auto px-8 py-10 print:py-0 max-w-[210mm]">
+
+      <!-- ============================================ -->
+      <!-- BERUFSERFAHRUNG -->
+      <!-- ============================================ -->
+      <section class="mb-16">
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">Berufserfahrung
+        </p>
+
+        <div class="space-y-10">
+
+          <!-- Station 1: ABS Safety -->
+          <div class="grid grid-cols-[auto_1fr] gap-x-6 no-break">
+            <div><span class="text-[0.85rem] text-zinc-500 whitespace-nowrap">2021 – heute</span></div>
+            <div>
+              <h3 class="font-medium text-zinc-900 text-[1rem]">Head of Digital Products, ABS Safety GmbH</h3>
+              <p class="text-[0.85rem] text-zinc-500 mt-0.5">Essen, Köln, Kevelaer</p>
+              <p class="mt-2 text-zinc-600 max-w-[44em] leading-relaxed">
+                Gesamtverantwortung für digitale Produktinitiativen in einem mittelständischen Industrieunternehmen
+                mit
+                starkem Kerngeschäft und gewachsenen organisatorischen Strukturen.
+              </p>
+              <ul class="mt-2 text-zinc-600 max-w-[44em] list-disc list-outside ml-4 space-y-1 leading-relaxed">
+                <li>Aufbau und Skalierung der Produkt- und Entwicklungsorganisation von 4 auf über 25 interne
+                  Mitarbeitende (zzgl. externer Partner).</li>
+                <li>Strategische Weiterentwicklung digitaler Self-Service-Produkte mit direktem Einfluss auf das
+                  Kerngeschäft; 65 % der Planungen wurden durch Kunden eigenständig durchgeführt, ermöglicht durch
+                  gezielte Produkt- und Prozessgestaltung.</li>
+                <li>Einführung strukturierter Hypothesen- und Priorisierungsansätze auf Basis quantitativer Signale
+                  entlang der Customer Journey trotz begrenzter Datenbasis.</li>
+                <li>Auseinandersetzung mit strategischen Zielkonflikten und Priorisierungsfragen in einem Umfeld mit
+                  gewachsenen Strukturen; daraus ein klarer Fokus auf explizite Entscheidungsräume und transparente
+                  Priorisierung als Voraussetzung für wirksame Produktarbeit.</li>
+                <li>Verantwortung für explorative digitale Initiativen jenseits des Kerngeschäfts; fundierte
+                  Lernerfahrungen zu Kapitalallokation, Fokus und organisationaler Anschlussfähigkeit.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Station 2: codecentric Head of Labs -->
+          <div class="grid grid-cols-[auto_1fr] gap-x-6 no-break">
+            <div><span class="text-[0.85rem] text-zinc-500 whitespace-nowrap">2019 – 2020</span></div>
+            <div>
+              <h3 class="font-medium text-zinc-900 text-[1rem]">Head of Digitization Labs, codecentric AG</h3>
+              <p class="text-[0.85rem] text-zinc-500 mt-0.5">Solingen</p>
+              <p class="mt-2 text-zinc-600 max-w-[44em] leading-relaxed">
+                Leitung von drei interdisziplinären Produktteams im Kontext von „Product Discovery as a Service" für
+                Enterprise-Kunden.
+              </p>
+              <ul class="mt-2 text-zinc-600 max-w-[44em] list-disc list-outside ml-4 space-y-1 leading-relaxed">
+                <li>Verantwortung für Hypothesen-getriebene Produktentwicklung in frühen Markt- und Innovationsphasen.
+                </li>
+                <li>Entwicklung iterativer Zielbilder und Outcome-Modelle in hochgradig unsicheren Kontexten.</li>
+                <li>Durchführung strukturierter Discovery-Formate mit enger Kundeneinbindung und konsequenter
+                  Validierung
+                  durch Experimente.</li>
+                <li>Begleitung von Investitions- und Priorisierungsentscheidungen auf Senior-Level.</li>
+                <li>Erprobung alternativer Revenue-Modelle mit Pilotkunden; relevante strategische Lernerfahrungen
+                  trotz
+                  begrenzter Skalierung.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Station 3: the black frame -->
+          <div class="grid grid-cols-[auto_1fr] gap-x-6 no-break">
+            <div><span class="text-[0.85rem] text-zinc-500 whitespace-nowrap">2017 – 2019</span></div>
+            <div>
+              <h3 class="font-medium text-zinc-900 text-[1rem]">Innovation Strategist, the black frame</h3>
+              <p class="text-[0.85rem] text-zinc-500 mt-0.5">Dortmund</p>
+              <ul class="mt-2 text-zinc-600 max-w-[44em] list-disc list-outside ml-4 space-y-1 leading-relaxed">
+                <li>Mitarbeit in einer strategischen Innovationseinheit mit Fokus auf Frühphasen-Innovation, Ideation
+                  und
+                  Exploration neuer Geschäftsmodelle.</li>
+                <li>Konzeption und Moderation von Workshops zur Identifikation von Opportunity Spaces auf Basis von
+                  Trend-, Markt- und Kontextanalysen.</li>
+                <li>Mitwirkung an der Entwicklung und Vorbereitung einer eigenständigen Neugründung im Umfeld eines
+                  großen
+                  deutschen Versicherungsunternehmens mit Fokus auf ein neuartiges Versicherungs- und
+                  Leistungsversprechen (vertraulich).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Station 4: codecentric IT Consultant -->
+          <div class="grid grid-cols-[auto_1fr] gap-x-6 no-break">
+            <div><span class="text-[0.85rem] text-zinc-500 whitespace-nowrap">2013 – 2017</span></div>
+            <div>
+              <h3 class="font-medium text-zinc-900 text-[1rem]">IT Consultant, codecentric AG</h3>
+              <p class="text-[0.85rem] text-zinc-500 mt-0.5">Solingen</p>
+              <ul class="mt-2 text-zinc-600 max-w-[44em] list-disc list-outside ml-4 space-y-1 leading-relaxed">
+                <li>Tätigkeit als IT-Consultant mit Schwerpunkt Softwareentwicklung, überwiegend im
+                  Versicherungsumfeld.
+                </li>
+                <li>Schrittweise Erweiterung der Rolle von technischer Umsetzung hin zu produkt-, entscheidungs- und
+                  konzeptionsnahen Fragestellungen.</li>
+                <li>Unterstützung von Kunden bei der Übersetzung komplexer Geschäftsprozesse in digitale Lösungen.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Station 5: CRON Systems -->
+          <div class="grid grid-cols-[auto_1fr] gap-x-6 no-break">
+            <div><span class="text-[0.85rem] text-zinc-500 whitespace-nowrap">2010 – 2013</span></div>
+            <div>
+              <h3 class="font-medium text-zinc-900 text-[1rem]">Softwareentwickler, CRON Systems-Automation GmbH</h3>
+              <ul class="mt-2 text-zinc-600 max-w-[44em] list-disc list-outside ml-4 space-y-1 leading-relaxed">
+                <li>Softwareentwicklung im Umfeld industrieller Automatisierungssysteme.</li>
+                <li>Aufbau eines fundierten technischen Grundverständnisses als Basis für spätere Produkt- und
+                  Führungsrollen.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+
+      <!-- ============================================ -->
+      <!-- AUSBILDUNG -->
+      <!-- ============================================ -->
+      <section class="mb-16 no-break">
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">Ausbildung</p>
+        <div>
+          <p class="font-medium text-zinc-900 text-[1rem]">Ruhr-Universität Bochum</p>
+          <p class="text-zinc-600 text-[0.85rem]">Bachelor of Science (B.Sc.), Informatik</p>
+        </div>
+      </section>
+    </div>
+  </div>
+  <!-- /WRAP -->
+
+  <!-- WRAP -->
+  <div class="bg-white">
+    <div class="mx-auto px-8 py-12   max-w-[210mm]   ">
+
+      <!-- ============================================ -->
+      <!-- SCHWERPUNKTE -->
+      <!-- ============================================ -->
+      <section class="mb-16">
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">Schwerpunkte</p>
+
+        <p class="text-zinc-900 leading-[1.35] mb-10 text-[1.4em] font-medium">
+          Ich arbeite an der Schnittstelle von Strategie, Produkt und Organisation – mit dem Ziel,
+          Entscheidungsfähigkeit strukturell zu verankern und Produktarbeit wirksam zu machen.
+        </p>
+
+        <!-- Quad Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+          <div class="ref-card bg-zinc-50 no-break">
+            <p class="font-medium text-zinc-900 text-[1rem] mb-2">
+              Strategische
+              Produktführung &amp; Entscheidungslogik
+            </p>
+            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">Übersetzung strategischer
+              Zielbilder in priorisierte Produktarbeit. Strukturierung von Entscheidungsoptionen, explizite Benennung
+              von
+              Zielkonflikten und Aufbau klarer Eskalations- und Priorisierungsmechanismen.</p>
+          </div>
+          <div class="ref-card bg-zinc-50 no-break">
+            <p class="font-medium text-zinc-900 text-[1rem] mb-2">
+              Outcome- &amp;
+              Hypothesengetriebene Produktarbeit
+            </p>
+            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">Systematische Reduktion von
+              Unsicherheit durch klare Hypothesen, Experimente und überprüfbare Zielbilder. Nutzung quantitativer und
+              qualitativer Signale zur Orientierung – insbesondere in frühen oder datenarmen Kontexten.</p>
+          </div>
+          <div class="ref-card bg-zinc-50 no-break">
+            <p class="font-medium text-zinc-900 text-[1rem] mb-2">
+              Portfolio- &amp;
+              Strukturarbeit
+            </p>
+            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">Auseinandersetzung mit
+              Kapitalallokation, Fokus und organisatorischer Anschlussfähigkeit digitaler Initiativen. Moderation von
+              Spannungsfeldern zwischen Kerngeschäft, Exploration und langfristiger strategischer Ausrichtung.</p>
+          </div>
+          <div class="ref-card bg-zinc-50 no-break">
+            <p class="font-medium text-zinc-900 text-[1rem] mb-2">
+              Leadership &amp;
+              Leistungsfähigkeit von Teams
+            </p>
+            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">Aufbau und Entwicklung
+              leistungsfähiger Produkt- und Entwicklungsteams. Verbindung von Klarheit, Verantwortung und
+              psychologischer
+              Sicherheit. Wiederherstellung von Entscheidungsfähigkeit in konflikt- oder unsicherheitsgeprägten
+              Situationen.</p>
+          </div>
+        </div>
+
+        <!-- Methoden Tags -->
+        <div class="no-break">
+          <p class="font-medium text-zinc-900 text-[1rem] mb-3">Methoden &amp; Arbeitsweisen</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="ref-tag bg-zinc-100 text-zinc-700">OKR-Logiken &amp; Outcome-Roadmapping</span>
+            <span class="ref-tag bg-zinc-100 text-zinc-700">Hypothesen- &amp; Experiment-Design</span>
+            <span class="ref-tag bg-zinc-100 text-zinc-700">Discovery-Formate &amp; qualitative
+              Nutzerinterviews</span>
+            <span class="ref-tag bg-zinc-100 text-zinc-700">Priorisierungs- &amp; Entscheidungsframeworks</span>
+            <span class="ref-tag bg-zinc-100 text-zinc-700">Moderation strategischer Konflikte und
+              Eskalationsprozesse</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ============================================ -->
+      <!-- HALTUNG -->
+      <!-- ============================================ -->
+      <section class="mb-16">
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-4 page-break">Haltung
+        </p>
+        <p class="text-zinc-900 leading-[1.35] mb-10 text-[1.4em] font-medium">
+          Ich suche die Zusammenarbeit mit Organisationen, in denen strategische Klarheit, gemeinsame
+          Entscheidungsfähigkeit und ein starkes Führungsteam die Grundlage für nachhaltige Produkt&shy;entwicklung
+          bilden.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="ref-card bg-zinc-50 no-break">
+            <p class="font-medium text-zinc-900 text-[1rem] mb-2">Klarheit ermöglicht Geschwindigkeit</p>
+            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">Ich glaube, dass nachhaltige
+              Geschwindigkeit nur dort entsteht, wo Zielbilder, Entscheidungsräume und Prioritäten explizit sind.
+              Unklare
+              Mandate erzeugen Aktivität, aber keine Wirkung.</p>
+          </div>
+          <div class="ref-card bg-zinc-50 no-break">
+            <p class="font-medium text-zinc-900 text-[1rem] mb-2">Entscheidungen sind Teamleistung</p>
+            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">Gute Entscheidungen entstehen
+              durch Reibung, nicht durch Hierarchie. Ich mache Zielkonflikte sichtbar, strukturiere Optionen und
+              fördere
+              kontroverse Diskussionen – mit dem Anspruch, gemeinsam tragfähige Lösungen zu entwickeln und danach
+              geschlossen zu handeln.</p>
+          </div>
+          <div class="ref-card bg-zinc-50 no-break">
+            <p class="font-medium text-zinc-900 text-[1rem] mb-2">Menschen vor Mechanik</p>
+            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">Produktorganisationen sind
+              keine Ressourcenstrukturen. Leistung entsteht, wenn Menschen Orientierung, Verantwortung und
+              psychologische
+              Sicherheit erleben. Klarheit und Empathie sind für mich kein Widerspruch, sondern Voraussetzung für
+              Exzellenz.</p>
+          </div>
+          <div class="ref-card bg-zinc-50 no-break">
+            <p class="font-medium text-zinc-900 text-[1rem] mb-2">Unsicherheit bewusst gestalten</p>
+            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">Produktarbeit ist
+              systematische
+              Reduktion von Unsicherheit. Hypothesen, Experimente und transparente Annahmen sind dabei wichtiger als
+              Perfektion oder vermeintliche Sicherheit.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- SPRACHEN -->
+      <!-- ============================================ -->
+      <section class="no-break">
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-4">Sprachen</p>
+        <p class="text-zinc-600 text-[0.85rem]">Deutsch (Muttersprache) · Englisch (fließend)</p>
+      </section>
+
+      <!-- Share Dialog -->
+      <div id="share-dialog" class="hidden fixed inset-0 z-50 no-print">
+        <div class="absolute inset-0 bg-black/30" onclick="closeShareDialog()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl p-6 w-80">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-medium text-zinc-900 text-sm">Teilen</h3>
+            <button onclick="closeShareDialog()"
+              class="text-zinc-500 hover:text-zinc-700 text-xl leading-none cursor-pointer bg-transparent border-none">&times;</button>
+          </div>
+          <div class="space-y-2">
+            <button onclick="copyLink()"
+              class="w-full text-left px-3 py-2 border border-zinc-200 rounded hover:bg-zinc-50 text-sm text-zinc-700 cursor-pointer bg-transparent transition-colors">
+              Link kopieren
+            </button>
+            <button onclick="shareEmail()"
+              class="w-full text-left px-3 py-2 border border-zinc-200 rounded hover:bg-zinc-50 text-sm text-zinc-700 cursor-pointer bg-transparent transition-colors">
+              Per E-Mail teilen
+            </button>
+          </div>
+          <p id="copy-feedback" class="hidden text-xs text-teal-600 mt-3">Link kopiert!</p>
+        </div>
+      </div>
+
+
+    </div>
+
+    <script>
+      function openShareDialog() {
+        if (navigator.share) {
+          navigator.share({
+            title: document.title,
+            url: window.location.href
+          }).catch(function () { });
+        } else {
+          document.getElementById('share-dialog').classList.remove('hidden');
+        }
+      }
+
+      function closeShareDialog() {
+        document.getElementById('share-dialog').classList.add('hidden');
+        document.getElementById('copy-feedback').classList.add('hidden');
+      }
+
+      function copyLink() {
+        navigator.clipboard.writeText(window.location.href).then(function () {
+          var feedback = document.getElementById('copy-feedback');
+          feedback.classList.remove('hidden');
+          setTimeout(function () { feedback.classList.add('hidden'); }, 2000);
+        });
+      }
+
+      function shareEmail() {
+        window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href);
+        closeShareDialog();
+      }
+    </script>
+
+</body>
+
+</html>

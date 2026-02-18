@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
 CV HTML Generator
-Generates minimalist HTML CV from structured markdown
+Generates HTML CV from structured markdown using Zinc-Teal Brand Kit (Geist fonts)
 """
 
 import sys
 import re
 from pathlib import Path
 from typing import Dict, List, Any
+
 
 class CVParser:
     """Parse structured markdown CV into data model"""
@@ -35,7 +36,6 @@ class CVParser:
                 header['name'] = line[2:].strip()
                 # Title (**bold**)
                 if i+1 < len(lines) and lines[i+1].startswith('**'):
-                    # Remove all ** from title
                     title_text = lines[i+1]
                     while '**' in title_text:
                         title_text = title_text.replace('**', '')
@@ -95,7 +95,7 @@ class CVParser:
             # Subsection (### Title)
             elif line.startswith('### '):
                 if current_section:
-                    subtitle = line[4:].strip().strip('*').strip()  # Remove ** from title
+                    subtitle = line[4:].strip().strip('*').strip()
                     current_subsection = {
                         'title': subtitle,
                         'content': []
@@ -123,13 +123,11 @@ class CVParser:
             # Regular paragraph
             elif line and not line.startswith('#') and not line.startswith('---'):
                 if current_subsection:
-                    # Check if this is description (after period, before bullets)
                     if 'period' in current_subsection and 'bullets' not in current_subsection:
                         if 'description' not in current_subsection:
                             current_subsection['description'] = []
                         current_subsection['description'].append(line)
                     elif 'bullets' not in current_subsection and 'period' not in current_subsection:
-                        # Content before period
                         current_subsection['content'].append(line)
                 elif current_section:
                     current_section['content'].append({'type': 'text', 'text': line})
@@ -161,9 +159,9 @@ class CVParser:
 
 
 class HTMLGenerator:
-    """Generate HTML from parsed CV data"""
+    """Generate HTML from parsed CV data using Zinc-Teal Brand Kit"""
 
-    def __init__(self, data: Dict[str, Any], photo_path: str = 'Jan_Hoelter_Foto.jpeg', lang: str = 'de'):
+    def __init__(self, data: Dict[str, Any], photo_path: str = 'assets/Jan_Hoelter_Foto.jpeg', lang: str = 'de'):
         self.data = data
         self.photo = photo_path
         self.lang = lang
@@ -175,13 +173,17 @@ class HTMLGenerator:
             return {
                 'print': 'Print',
                 'share': 'Share',
-                'link_copied': 'Link copied!'
+                'link_copied': 'Link copied!',
+                'copy_link': 'Copy link',
+                'share_email': 'Share via email',
             }
         else:
             return {
                 'print': 'Drucken',
                 'share': 'Teilen',
-                'link_copied': 'Link kopiert!'
+                'link_copied': 'Link kopiert!',
+                'copy_link': 'Link kopieren',
+                'share_email': 'Per E-Mail teilen',
             }
 
     def _get_timestamp(self) -> str:
@@ -189,381 +191,604 @@ class HTMLGenerator:
         from datetime import datetime
         return datetime.now().strftime('%Y-%m-%d %H:%M')
 
+    def _html_escape(self, text: str) -> str:
+        """Escape HTML special characters"""
+        return text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+
     def generate(self) -> str:
         """Generate complete HTML"""
-        header = self._generate_header()
-        sections = self._generate_sections()
+        sections_by_group = self._group_sections()
+        return self._template(sections_by_group)
 
-        return self._template(header, sections)
+    def _group_sections(self) -> Dict[str, List]:
+        """Group sections into the three background zones"""
+        groups = {'white1': [], 'zinc50': [], 'white2': []}
 
-    def _template(self, header: str, sections: str) -> str:
-        """HTML template with Tailwind styling"""
+        for section in self.data['sections']:
+            t = section['type']
+            if t in ('profil',):
+                groups['white1'].append(section)
+            elif t in ('berufserfahrung', 'ausbildung'):
+                groups['zinc50'].append(section)
+            elif t in ('schwerpunkte', 'haltung', 'sprachen', 'generic'):
+                groups['white2'].append(section)
+
+        return groups
+
+    def _template(self, sections_by_group: Dict) -> str:
+        """HTML template with Brand Kit styling"""
         lang_attr = 'en' if self.lang == 'en' else 'de'
+        name = self._html_escape(self.data['header'].get('name', ''))
+        title = self._html_escape(self.data['header'].get('title', ''))
+
+        # Generate section HTML for each group
+        white1_html = self._generate_header() + '\n'.join(
+            self._generate_section(s) for s in sections_by_group['white1']
+        )
+        zinc50_html = '\n'.join(
+            self._generate_section(s) for s in sections_by_group['zinc50']
+        )
+        white2_html = '\n'.join(
+            self._generate_section(s) for s in sections_by_group['white2']
+        )
 
         return f'''<!DOCTYPE html>
 <html lang="{lang_attr}">
 <!--
-  CV Export Template
+  CV Export
   Generated: {self._get_timestamp()}
   Source: Markdown CV file
   Photo: {self.photo}
   Generator: generate-html.py
+  Design: Zinc-Teal Brand Kit (Geist fonts)
 -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{self.data['header']['name']}</title>
+  <title>{name} – {title}</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {{
       theme: {{
         extend: {{
           fontFamily: {{
-            sans: ['Inter', 'system-ui', 'sans-serif'],
+            sans: ['Geist', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+            pixel: ['Geist Pixel', 'ui-monospace', 'SFMono-Regular', 'monospace'],
           }},
         }},
       }},
     }}
   </script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-    @page {{ size: A4; margin: 12mm 15mm; }}
+    /* === Lokale Fonts === */
+    @font-face {{
+      font-family: 'Geist';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/Geist-Regular.woff2') format('woff2');
+    }}
+    @font-face {{
+      font-family: 'Geist';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('assets/fonts/Geist-Medium.woff2') format('woff2');
+    }}
+    @font-face {{
+      font-family: 'Geist';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('assets/fonts/Geist-SemiBold.woff2') format('woff2');
+    }}
+    @font-face {{
+      font-family: 'Geist';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('assets/fonts/Geist-Bold.woff2') format('woff2');
+    }}
+    @font-face {{
+      font-family: 'Geist Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/GeistMono-Regular.woff2') format('woff2');
+    }}
+    @font-face {{
+      font-family: 'Geist Mono';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('assets/fonts/GeistMono-Medium.woff2') format('woff2');
+    }}
+    @font-face {{
+      font-family: 'Geist Mono';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('assets/fonts/GeistMono-SemiBold.woff2') format('woff2');
+    }}
+    @font-face {{
+      font-family: 'Geist Pixel';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('assets/fonts/GeistPixel-Square.woff2') format('woff2');
+    }}
+
+    .ref-card {{
+      background: white;
+      border: 1px solid #e4e4e7;
+      border-radius: 8px;
+      padding: 1.4rem 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }}
+    .ref-card:hover {{
+      border-color: #a1a1aa;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }}
+    .ref-tag {{
+      font-family: 'Geist', system-ui, sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0.01em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }}
+    .no-break {{
+      break-inside: avoid;
+    }}
+    @page {{
+      size: A4;
+      margin: 10mm 18mm;
+    }}
     @media print {{
-      body {{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }}
       .no-print {{ display: none !important; }}
-      .no-break {{ break-inside: avoid; page-break-inside: avoid; }}
-      .page-break {{ page-break-before: always; }}
+      body {{
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }}
+      .page-break {{ break-before: page; }}
     }}
   </style>
 </head>
-<body class="font-sans text-gray-900 bg-white leading-relaxed print:bg-white">
-  <!-- Action Buttons -->
-  <div class="no-print fixed top-4 right-4 flex gap-2">
-    <button onclick="window.print()" class="px-3 py-1.5 text-xs text-gray-600 border border-gray-300 rounded hover:bg-gray-50 flex items-center gap-1.5 bg-white">
-      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+<body style="background: #fafafa;" class="font-sans text-zinc-700 text-[0.95rem] print:text-[0.7rem] leading-relaxed">
+
+  <!-- Action Bar -->
+  <div class="fixed top-0 right-0 flex justify-end gap-2 no-print p-3 pr-5">
+    <button onclick="window.print()"
+      class="flex gap-2 bg-zinc-100 hover:bg-zinc-200 text-xs px-2.5 py-1.5 border border-zinc-200 rounded text-zinc-700 hover:text-zinc-900 hover:border-zinc-700 cursor-pointer transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+        <path d="M17 2C17.5523 2 18 2.44772 18 3V7H21C21.5523 7 22 7.44772 22 8V18C22 18.5523 21.5523 19 21 19H18V21C18 21.5523 17.5523 22 17 22H7C6.44772 22 6 21.5523 6 21V19H3C2.44772 19 2 18.5523 2 18V8C2 7.44772 2.44772 7 3 7H6V3C6 2.44772 6.44772 2 7 2H17ZM16 17H8V20H16V17ZM20 9H4V17H6V16C6 15.4477 6.44772 15 7 15H17C17.5523 15 18 15.4477 18 16V17H20V9ZM8 10V12H5V10H8ZM16 4H8V7H16V4Z"></path>
       </svg>
       {self.labels['print']}
     </button>
-    <button onclick="if(navigator.share){{navigator.share({{title:'{self.data['header']['name']} - CV',url:window.location.href}})}}else{{navigator.clipboard.writeText(window.location.href);alert('{self.labels['link_copied']}')}}\" class="px-3 py-1.5 text-xs text-gray-600 border border-gray-300 rounded hover:bg-gray-50 flex items-center gap-1.5 bg-white">
-      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+    <button onclick="openShareDialog()"
+      class="flex gap-2 bg-zinc-100 hover:bg-zinc-200 text-xs px-2.5 py-1.5 border border-zinc-200 rounded text-zinc-700 hover:text-zinc-900 hover:border-zinc-400 cursor-pointer transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+        <path d="M12 2.58582L18.2071 8.79292L16.7929 10.2071L13 6.41424V16H11V6.41424L7.20711 10.2071L5.79289 8.79292L12 2.58582ZM3 18V14H5V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V14H21V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18Z"></path>
       </svg>
       {self.labels['share']}
     </button>
   </div>
 
-  <!-- Container with Shadow -->
-  <div class="max-w-3xl mx-auto my-8 bg-white shadow-lg print:shadow-none print:my-0">
-    <div class="px-8 py-16 print:px-0 print:py-0">
-{header}
-{sections}
+  <!-- ZONE 1: bg-white (Header + Profil) -->
+  <div class="bg-white">
+    <div class="mx-auto px-8 pt-12 pb-2 max-w-[210mm]">
+{white1_html}
     </div>
   </div>
+
+  <!-- ZONE 2: bg-zinc-50 (Berufserfahrung + Ausbildung) -->
+  <div class="bg-zinc-50 print:bg-white">
+    <div class="mx-auto px-8 py-10 print:py-0 max-w-[210mm]">
+{zinc50_html}
+    </div>
+  </div>
+
+  <!-- ZONE 3: bg-white (Schwerpunkte + Haltung + Sprachen) -->
+  <div class="bg-white">
+    <div class="mx-auto px-8 py-12 max-w-[210mm]">
+{white2_html}
+
+      <!-- Share Dialog -->
+      <div id="share-dialog" class="hidden fixed inset-0 z-50 no-print">
+        <div class="absolute inset-0 bg-black/30" onclick="closeShareDialog()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl p-6 w-80">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-medium text-zinc-900 text-sm">{self.labels['share']}</h3>
+            <button onclick="closeShareDialog()"
+              class="text-zinc-500 hover:text-zinc-700 text-xl leading-none cursor-pointer bg-transparent border-none">&times;</button>
+          </div>
+          <div class="space-y-2">
+            <button onclick="copyLink()"
+              class="w-full text-left px-3 py-2 border border-zinc-200 rounded hover:bg-zinc-50 text-sm text-zinc-700 cursor-pointer bg-transparent transition-colors">
+              {self.labels['copy_link']}
+            </button>
+            <button onclick="shareEmail()"
+              class="w-full text-left px-3 py-2 border border-zinc-200 rounded hover:bg-zinc-50 text-sm text-zinc-700 cursor-pointer bg-transparent transition-colors">
+              {self.labels['share_email']}
+            </button>
+          </div>
+          <p id="copy-feedback" class="hidden text-xs text-teal-600 mt-3">{self.labels['link_copied']}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openShareDialog() {{
+      if (navigator.share) {{
+        navigator.share({{ title: document.title, url: window.location.href }}).catch(function () {{}});
+      }} else {{
+        document.getElementById('share-dialog').classList.remove('hidden');
+      }}
+    }}
+    function closeShareDialog() {{
+      document.getElementById('share-dialog').classList.add('hidden');
+      document.getElementById('copy-feedback').classList.add('hidden');
+    }}
+    function copyLink() {{
+      navigator.clipboard.writeText(window.location.href).then(function () {{
+        var feedback = document.getElementById('copy-feedback');
+        feedback.classList.remove('hidden');
+        setTimeout(function () {{ feedback.classList.add('hidden'); }}, 2000);
+      }});
+    }}
+    function shareEmail() {{
+      window.location.href = 'mailto:?subject=' + encodeURIComponent(document.title) + '&body=' + encodeURIComponent(window.location.href);
+      closeShareDialog();
+    }}
+  </script>
+
 </body>
 </html>
 '''
 
+    def _generate_section(self, section: Dict) -> str:
+        """Dispatch to correct section generator"""
+        t = section['type']
+        if t == 'profil':
+            return self._generate_profil(section)
+        elif t == 'berufserfahrung':
+            return self._generate_berufserfahrung(section)
+        elif t == 'ausbildung':
+            return self._generate_ausbildung(section)
+        elif t == 'schwerpunkte':
+            return self._generate_schwerpunkte(section)
+        elif t == 'haltung':
+            return self._generate_haltung(section)
+        elif t == 'sprachen':
+            return self._generate_sprachen(section)
+        else:
+            return self._generate_generic(section)
+
     def _generate_header(self) -> str:
-        """Generate header section"""
+        """Generate header with portrait, name, title and teal contact badges"""
         h = self.data['header']
         contact = h.get('contact', {})
+        name = self._html_escape(h.get('name', ''))
+        title = self._html_escape(h.get('title', ''))
 
-        # Contact items with SVG icons
-        contact_items = []
+        # Contact badges
+        badges = []
 
         if 'location' in contact:
-            contact_items.append(f'''        <span class="flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
-          {contact['location']}
-        </span>''')
+            loc = self._html_escape(contact['location'])
+            badges.append(f'''              <span class="flex items-center gap-1.5 text-teal-600 py-1 px-3 rounded-md bg-teal-50 border border-teal-100">
+                <svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path d="M12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364L12 23.7279ZM16.9497 15.9497C19.6834 13.2161 19.6834 8.78392 16.9497 6.05025C14.2161 3.31658 9.78392 3.31658 7.05025 6.05025C4.31658 8.78392 4.31658 13.2161 7.05025 15.9497L12 20.8995L16.9497 15.9497ZM12 13C10.8954 13 10 12.1046 10 11C10 9.89543 10.8954 9 12 9C13.1046 9 14 9.89543 14 11C14 12.1046 13.1046 13 12 13Z"></path>
+                </svg>
+                {loc}
+              </span>''')
 
         if 'email' in contact:
-            contact_items.append(f'''        <span class="flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
-          {contact['email']}
-        </span>''')
+            email = self._html_escape(contact['email'])
+            badges.append(f'''              <a href="mailto:{email}"
+                class="flex items-center gap-1.5 text-teal-600 hover:text-teal-700 py-1 px-3 bg-teal-50 hover:bg-teal-100 rounded-md no-underline transition-colors duration-200 border border-teal-100">
+                <svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM20 7.23792L12.0718 14.338L4 7.21594V19H20V7.23792ZM4.51146 5L12.0619 11.662L19.501 5H4.51146Z"></path>
+                </svg>
+                {email}
+              </a>''')
 
         if 'phone' in contact:
-            contact_items.append(f'''        <span class="flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
-          {contact['phone']}
-        </span>''')
+            phone = self._html_escape(contact['phone'])
+            phone_href = phone.replace(' ', '')
+            badges.append(f'''              <a href="tel:{phone_href}"
+                class="flex items-center gap-1.5 text-teal-600 hover:text-teal-700 py-1 px-3 bg-teal-50 hover:bg-teal-100 rounded-md no-underline transition-colors duration-200 border border-teal-100">
+                <svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path d="M7 4V20H17V4H7ZM6 2H18C18.5523 2 19 2.44772 19 3V21C19 21.5523 18.5523 22 18 22H6C5.44772 22 5 21.5523 5 21V3C5 2.44772 5.44772 2 6 2ZM12 17C12.5523 17 13 17.4477 13 18C13 18.5523 12.5523 19 12 19C11.4477 19 11 18.5523 11 18C11 17.4477 11.4477 17 12 17Z"></path>
+                </svg>
+                {phone}
+              </a>''')
 
         if 'linkedin' in contact:
-            linkedin_url = contact['linkedin'] if contact['linkedin'].startswith('http') else f"https://{contact['linkedin']}"
-            contact_items.append(f'''        <a href="{linkedin_url}" class="flex items-center gap-1.5 underline hover:text-gray-900">
-          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
-          LinkedIn
-        </a>''')
+            linkedin_url = contact['linkedin']
+            if not linkedin_url.startswith('http'):
+                linkedin_url = f'https://{linkedin_url}'
+            linkedin_url = self._html_escape(linkedin_url)
+            badges.append(f'''              <a href="{linkedin_url}"
+                class="flex items-center gap-1.5 text-teal-600 hover:text-teal-700 py-1 px-3 bg-teal-50 hover:bg-teal-100 rounded-md no-underline transition-colors duration-200 border border-teal-100">
+                <svg class="text-teal-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path d="M4.00098 3H20.001C20.5533 3 21.001 3.44772 21.001 4V20C21.001 20.5523 20.5533 21 20.001 21H4.00098C3.44869 21 3.00098 20.5523 3.00098 20V4C3.00098 3.44772 3.44869 3 4.00098 3ZM5.00098 5V19H19.001V5H5.00098ZM7.50098 9C6.67255 9 6.00098 8.32843 6.00098 7.5C6.00098 6.67157 6.67255 6 7.50098 6C8.3294 6 9.00098 6.67157 9.00098 7.5C9.00098 8.32843 8.3294 9 7.50098 9ZM6.50098 10H8.50098V17.5H6.50098V10ZM12.001 10.4295C12.5854 9.86534 13.2665 9.5 14.001 9.5C16.072 9.5 17.501 11.1789 17.501 13.25V17.5H15.501V13.25C15.501 12.2835 14.7175 11.5 13.751 11.5C12.7845 11.5 12.001 12.2835 12.001 13.25V17.5H10.001V10H12.001V10.4295Z"></path>
+                </svg>
+                LinkedIn
+              </a>''')
 
-        contact_html = '\n'.join(contact_items)
+        badges_html = '\n'.join(badges)
 
         return f'''      <!-- Header -->
-      <header class="mb-16">
-        <div class="flex justify-between items-start gap-12 mb-6">
+      <header class="mb-10">
+        <div class="flex items-start gap-8">
+          <img src="{self.photo}" alt="{name}"
+            class="w-[110px] h-[110px] rounded-full object-cover object-top flex-shrink-0 grayscale"
+            style="-webkit-print-color-adjust: exact; print-color-adjust: exact;">
           <div class="flex-1">
-            <h1 class="text-4xl font-light mb-1 tracking-tight">{h.get('name', '')}</h1>
-            <p class="text-sm text-gray-600 font-medium mb-2">{h.get('title', '')}</p>
-            <p class="text-sm text-gray-600 italic">
-              {h.get('tagline', '')}
-            </p>
+            <h1 class="text-[1.5em] font-medium text-zinc-900 mb-3 leading-[1.1]">{name}</h1>
+            <p class="text-[1rem] text-zinc-700">{title}</p>
+            <div class="flex flex-wrap gap-x-2 gap-y-2 text-[0.75rem] mt-6">
+{badges_html}
+            </div>
           </div>
-          <img src="{self.photo}" alt="{h.get('name', '')}" class="w-28 h-28 rounded-full object-cover object-top grayscale">
-        </div>
-        <div class="flex flex-wrap gap-x-6 gap-y-1 text-xs text-gray-600">
-{contact_html}
         </div>
       </header>
 '''
 
-    def _generate_sections(self) -> str:
-        """Generate all content sections"""
-        sections_html = []
-
-        for section in self.data['sections']:
-            section_type = section['type']
-
-            if section_type == 'profil':
-                sections_html.append(self._generate_profil(section))
-            elif section_type == 'berufserfahrung':
-                sections_html.append(self._generate_berufserfahrung(section))
-            elif section_type == 'ausbildung':
-                sections_html.append(self._generate_ausbildung(section))
-            elif section_type == 'schwerpunkte':
-                sections_html.append(self._generate_schwerpunkte(section))
-            elif section_type == 'haltung':
-                sections_html.append(self._generate_haltung(section))
-            elif section_type == 'sprachen':
-                sections_html.append(self._generate_sprachen(section))
-            else:
-                sections_html.append(self._generate_generic(section))
-
-        return '\n'.join(sections_html)
-
     def _generate_profil(self, section: Dict) -> str:
-        """Generate Profil section with multi-paragraph support"""
-        paragraphs = []
-        for item in section['content']:
-            if item['type'] == 'text':
-                paragraphs.append(f'        <p>{item["text"]}</p>')
+        """Generate Profil: tagline as hero statement, all content paragraphs as body"""
+        # Tagline from header = hero statement
+        tagline = self.data['header'].get('tagline', '')
+        hero_html = ''
+        if tagline:
+            hero_html = f'      <p class="text-zinc-900 leading-[1.35] text-[1.4em] font-medium">\n        {self._html_escape(tagline)}\n      </p>\n'
 
-        paragraphs_html = '\n'.join(paragraphs)
+        # All profil paragraphs → body (no special treatment for first)
+        paragraphs = [item['text'] for item in section['content'] if item['type'] == 'text']
+        body_html = ''
+        if paragraphs:
+            body_items = [f'          <p>{self._html_escape(p)}</p>' for p in paragraphs]
+            body_html = '      <div class="text-zinc-700 max-w-[44em] text-[1em] leading-relaxed mt-4 space-y-3">\n' + '\n'.join(body_items) + '\n      </div>\n'
 
-        return f'''      <!-- Profil -->
-      <section class="mb-12 no-break">
-        <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">{section['title']}</h2>
-        <div class="text-sm text-gray-800 space-y-3 leading-relaxed">
-{paragraphs_html}
-        </div>
-      </section>
+        return f'''      <!-- Profil / Hero -->
+      <section class="mb-10">
+{hero_html}{body_html}      </section>
 '''
 
     def _generate_berufserfahrung(self, section: Dict) -> str:
-        """Generate Berufserfahrung section with timeline"""
+        """Generate Berufserfahrung with grid timeline layout"""
+        label = self._html_escape(section['title'])
         jobs_html = []
 
         for job in section['subsections']:
-            # Optional description paragraph after period
+            company = self._html_escape(job['title'])
+            job_title = self._html_escape(job.get('job_title', ''))
+            period_raw = job.get('period', '')
+
+            # Period may contain "Zeitraum | Ort" → split on |
+            period = ''
+            location = ''
+            if '|' in period_raw:
+                parts = period_raw.split('|', 1)
+                period = self._html_escape(parts[0].strip())
+                location = self._html_escape(parts[1].strip())
+            else:
+                period = self._html_escape(period_raw)
+
+            # Optional description
             description_html = ''
             if 'description' in job:
-                desc_text = ' '.join(job['description'])
-                description_html = f'''        <p class="text-xs text-gray-700 mb-2 leading-relaxed">
-          {desc_text}
-        </p>
-'''
+                desc = self._html_escape(' '.join(job['description']))
+                description_html = f'\n              <p class="mt-2 text-zinc-600 max-w-[44em] leading-relaxed">{desc}</p>'
 
             # Bullets
             bullets_html = ''
             if 'bullets' in job:
-                bullet_items = '\n'.join([f'          <li>• {bullet}</li>' for bullet in job['bullets']])
-                bullets_html = f'''        <ul class="text-xs text-gray-700 space-y-1.5 ml-4">
-{bullet_items}
-        </ul>'''
+                items = '\n'.join([
+                    f'                <li>{self._html_escape(b)}</li>'
+                    for b in job['bullets']
+                ])
+                bullets_html = f'\n              <ul class="mt-2 text-zinc-600 max-w-[44em] list-disc list-outside ml-4 space-y-1 leading-relaxed">\n{items}\n              </ul>'
 
-            job_html = f'''      <div class="mb-10 no-break">
-        <div class="mb-2">
-          <h3 class="text-base font-medium">{job['title']}</h3>
-          <p class="text-sm font-medium text-gray-700">{job.get('job_title', '')}</p>
-          <p class="text-xs text-gray-500">{job.get('period', '')}</p>
-        </div>
-{description_html}{bullets_html}
-      </div>'''
+            # Heading: "Jobtitel, Firma" – ### = Firma, **bold** = Jobtitel
+            if job_title and company:
+                heading = f'{job_title}, {company}'
+            else:
+                heading = job_title or company
 
-            jobs_html.append(job_html)
+            location_html = ''
+            if location:
+                location_html = f'\n              <p class="text-[0.85rem] text-zinc-500 mt-0.5">{location}</p>'
 
-        jobs_section = '\n'.join(jobs_html)
+            jobs_html.append(f'''          <div class="grid grid-cols-[9rem_1fr] gap-x-6 no-break">
+            <div><span class="text-[0.85rem] text-zinc-500 whitespace-nowrap">{period}</span></div>
+            <div>
+              <h3 class="font-medium text-zinc-900 text-[1rem]">{heading}</h3>{location_html}{description_html}{bullets_html}
+            </div>
+          </div>''')
+
+        jobs_section = '\n\n'.join(jobs_html)
 
         return f'''      <!-- Berufserfahrung -->
-      <section class="mb-12">
-        <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">{section['title']}</h2>
+      <section class="mb-16">
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">{label}</p>
+        <div class="space-y-10">
 {jobs_section}
+        </div>
       </section>
 '''
 
     def _generate_ausbildung(self, section: Dict) -> str:
         """Generate Ausbildung section"""
-        education_items = []
+        label = self._html_escape(section['title'])
+        items_html = []
 
         if section['subsections']:
-            # Has subsections (### University)
             for edu in section['subsections']:
-                # Get degree and period from content
+                uni = self._html_escape(edu['title'])
                 degree = ''
                 period = ''
-                for line in edu.get('content', []):
-                    if 'Bachelor' in line or 'Master' in line or 'B.Sc' in line or 'M.Sc' in line:
-                        degree = line
-                    elif '–' in line or '-' in line:
-                        period = line
 
-                edu_html = f'''        <div>
-          <p class="text-sm font-medium">{edu['title']}</p>
-          <p class="text-xs text-gray-700">{degree}</p>
-          <p class="text-xs text-gray-500">{period}</p>
-        </div>'''
-                education_items.append(edu_html)
+                for line in edu.get('content', []):
+                    if any(x in line for x in ['Bachelor', 'Master', 'B.Sc', 'M.Sc', 'Diplom']):
+                        degree = self._html_escape(line)
+                    elif '–' in line or ' - ' in line or re.match(r'\d{4}', line):
+                        period = self._html_escape(line)
+
+                # If period is still empty, check for italic period parsed by parser
+                if not period and 'period' in edu:
+                    period = self._html_escape(edu['period'])
+
+                degree_html = f'\n          <p class="text-zinc-600 text-[0.85rem]">{degree}</p>' if degree else ''
+                period_html = f'\n          <p class="text-zinc-500 text-[0.85rem]">{period}</p>' if period else ''
+
+                items_html.append(f'''        <div>
+          <p class="font-medium text-zinc-900 text-[1rem]">{uni}</p>{degree_html}{period_html}
+        </div>''')
         else:
-            # No subsections - content directly in section
+            # Flat content fallback
             uni = ''
             degree = ''
             period = ''
-
             for item in section['content']:
-                if item['type'] == 'text':
-                    text = item['text']
-                    # Check if it's bold (university name)
-                    if text.startswith('**') and text.endswith('**'):
-                        uni = text.strip('*').strip()
-                    # Check if it's italic (period)
-                    elif text.startswith('*') and text.endswith('*'):
-                        period = text.strip('*').strip()
-                    # Check if it's degree
-                    elif 'Bachelor' in text or 'Master' in text or 'B.Sc' in text or 'M.Sc' in text:
-                        degree = text
+                text = item['text']
+                if text.startswith('**') and text.endswith('**'):
+                    uni = self._html_escape(text.strip('*').strip())
+                elif text.startswith('*') and text.endswith('*'):
+                    period = self._html_escape(text.strip('*').strip())
+                elif any(x in text for x in ['Bachelor', 'Master', 'B.Sc', 'M.Sc', 'Diplom']):
+                    degree = self._html_escape(text)
 
             if uni:
-                edu_html = f'''        <div>
-          <p class="text-sm font-medium">{uni}</p>
-          <p class="text-xs text-gray-700">{degree}</p>
-          <p class="text-xs text-gray-500">{period}</p>
-        </div>'''
-                education_items.append(edu_html)
+                degree_html = f'\n          <p class="text-zinc-600 text-[0.85rem]">{degree}</p>' if degree else ''
+                period_html = f'\n          <p class="text-zinc-500 text-[0.85rem]">{period}</p>' if period else ''
+                items_html.append(f'''        <div>
+          <p class="font-medium text-zinc-900 text-[1rem]">{uni}</p>{degree_html}{period_html}
+        </div>''')
 
-        education_html = '\n'.join(education_items)
+        education_html = '\n'.join(items_html)
 
         return f'''      <!-- Ausbildung -->
-      <section class="mb-12 no-break">
-        <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">{section['title']}</h2>
+      <section class="mb-16 no-break">
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">{label}</p>
 {education_html}
       </section>
 '''
 
     def _generate_schwerpunkte(self, section: Dict) -> str:
-        """Generate Schwerpunkte section with intro paragraph and cards"""
-        # Intro paragraph
-        intro_paragraphs = [item['text'] for item in section['content'] if item['type'] == 'text']
-        intro_html = '\n        '.join([f'<p class="text-sm text-gray-700 mb-6 leading-relaxed">\n          {p}\n        </p>' for p in intro_paragraphs[:1]])
+        """Generate Schwerpunkte with hero intro, ref-card grid, ref-tag pills"""
+        label = self._html_escape(section['title'])
 
-        # Cards from subsections (except "Methoden")
+        # Intro paragraph(s)
+        intro_paragraphs = [item['text'] for item in section['content'] if item['type'] == 'text']
+        hero_html = ''
+        if intro_paragraphs:
+            hero = self._html_escape(intro_paragraphs[0])
+            hero_html = f'        <p class="text-zinc-900 leading-[1.35] mb-10 text-[1.4em] font-medium">\n          {hero}\n        </p>\n'
+
+        # Cards and Methoden
         cards_html = []
         methoden_html = ''
 
-        for subsection in section['subsections']:
-            if 'Methoden' in subsection['title']:
-                # Generate pills for methods
+        for sub in section['subsections']:
+            if 'Methoden' in sub['title'] or 'Methods' in sub['title']:
+                # Pills
                 pills = []
-                for item in subsection.get('bullets', []):
-                    pills.append(f'          <span class="px-3 py-1 bg-white border border-gray-300 rounded-full text-xs text-gray-700">{item}</span>')
-
+                for b in sub.get('bullets', []):
+                    escaped_b = self._html_escape(b)
+                    pills.append(f'            <span class="ref-tag bg-zinc-100 text-zinc-700">{escaped_b}</span>')
                 pills_html = '\n'.join(pills)
-                methoden_html = f'''      <div class="pt-4 border-t border-gray-200">
-        <p class="text-xs text-gray-500 mb-3">{subsection['title']}</p>
-        <div class="flex flex-wrap gap-2">
+                methoden_title = self._html_escape(sub['title'])
+                methoden_html = f'''        <div class="no-break">
+          <p class="font-medium text-zinc-900 text-[1rem] mb-3">{methoden_title}</p>
+          <div class="flex flex-wrap gap-2">
 {pills_html}
-        </div>
-      </div>'''
-            else:
-                # Regular card
-                description = ' '.join([item if isinstance(item, str) else '' for item in subsection.get('content', [])])
-                card_html = f'''        <div class="bg-gray-50 p-4 rounded border border-gray-200 no-break">
-          <h3 class="text-sm font-medium mb-1.5">{subsection['title']}</h3>
-          <p class="text-xs text-gray-700 leading-relaxed">{description}</p>
+          </div>
         </div>'''
-                cards_html.append(card_html)
+            else:
+                sub_title = self._html_escape(sub['title'])
+                description = self._html_escape(' '.join(sub.get('content', [])))
+                cards_html.append(f'''          <div class="ref-card bg-zinc-50 no-break">
+            <p class="font-medium text-zinc-900 text-[1rem] mb-2">{sub_title}</p>
+            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">{description}</p>
+          </div>''')
 
         cards_section = '\n'.join(cards_html)
+        grid_html = f'        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">\n{cards_section}\n        </div>\n' if cards_html else ''
 
         return f'''      <!-- Schwerpunkte -->
-      <section class="mb-12 no-break">
-        <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">{section['title']}</h2>
-        {intro_html}
-        <div class="grid grid-cols-2 gap-4 mb-6">
-{cards_section}
-        </div>
-{methoden_html}
+      <section class="mb-16">
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">{label}</p>
+{hero_html}{grid_html}{methoden_html}
       </section>
 '''
 
     def _generate_haltung(self, section: Dict) -> str:
-        """Generate Haltung section with intro paragraph and cards"""
-        # Intro paragraph
-        intro_paragraphs = [item['text'] for item in section['content'] if item['type'] == 'text']
-        intro_html = '\n        '.join([f'<p class="text-sm text-gray-700 mb-6 leading-relaxed">\n          {p}\n        </p>' for p in intro_paragraphs[:1]])
+        """Generate Haltung with page-break label, hero intro, ref-card 2x2 grid"""
+        label = self._html_escape(section['title'])
 
-        # Cards from subsections
+        # Intro paragraph(s)
+        intro_paragraphs = [item['text'] for item in section['content'] if item['type'] == 'text']
+        hero_html = ''
+        if intro_paragraphs:
+            hero = self._html_escape(intro_paragraphs[0])
+            hero_html = f'        <p class="text-zinc-900 leading-[1.35] mb-10 text-[1.4em] font-medium">\n          {hero}\n        </p>\n'
+
+        # Cards
         cards_html = []
-        for subsection in section['subsections']:
-            description = ' '.join([item if isinstance(item, str) else '' for item in subsection.get('content', [])])
-            card_html = f'''        <div class="bg-gray-50 p-4 rounded border border-gray-200 no-break">
-          <h4 class="text-sm font-medium mb-1.5">{subsection['title']}</h4>
-          <p class="text-xs text-gray-700 leading-relaxed">{description}</p>
-        </div>'''
-            cards_html.append(card_html)
+        for sub in section['subsections']:
+            sub_title = self._html_escape(sub['title'])
+            description = self._html_escape(' '.join(sub.get('content', [])))
+            cards_html.append(f'''          <div class="ref-card bg-zinc-50 no-break">
+            <p class="font-medium text-zinc-900 text-[1rem] mb-2">{sub_title}</p>
+            <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">{description}</p>
+          </div>''')
 
         cards_section = '\n'.join(cards_html)
 
         return f'''      <!-- Haltung -->
-      <section class="mb-12 no-break">
-        <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">{section['title']}</h2>
-        {intro_html}
-        <div class="grid grid-cols-2 gap-4">
+      <section class="mb-16">
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-4 page-break">{label}</p>
+{hero_html}        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 {cards_section}
         </div>
       </section>
 '''
 
     def _generate_sprachen(self, section: Dict) -> str:
-        """Generate Sprachen section as simple text with · separator"""
-        # Collect all bullet points
-        languages = []
-        for item in section['content']:
-            if item['type'] == 'bullet':
-                languages.append(item['text'])
-
-        languages_text = ' · '.join(languages)
+        """Generate Sprachen as simple text with · separator"""
+        label = self._html_escape(section['title'])
+        languages = [item['text'] for item in section['content'] if item['type'] == 'bullet']
+        languages_text = ' · '.join(self._html_escape(l) for l in languages)
 
         return f'''      <!-- Sprachen -->
       <section class="no-break">
-        <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">{section['title']}</h2>
-        <p class="text-sm text-gray-700">{languages_text}</p>
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-4">{label}</p>
+        <p class="text-zinc-600 text-[0.85rem]">{languages_text}</p>
       </section>
 '''
 
     def _generate_generic(self, section: Dict) -> str:
         """Generate generic section"""
+        label = self._html_escape(section['title'])
         content_html = []
         for item in section['content']:
             if item['type'] == 'text':
-                content_html.append(f'        <p class="text-sm text-gray-700 mb-3">{item["text"]}</p>')
+                content_html.append(f'        <p class="text-zinc-700 text-[0.95rem] mb-3">{self._html_escape(item["text"])}</p>')
             elif item['type'] == 'bullet':
-                content_html.append(f'        <li class="text-sm text-gray-700">• {item["text"]}</li>')
+                content_html.append(f'        <li class="text-zinc-700 text-[0.95rem]">• {self._html_escape(item["text"])}</li>')
 
         content_section = '\n'.join(content_html)
 
-        return f'''      <!-- {section['title']} -->
+        return f'''      <!-- {label} -->
       <section class="mb-14">
-        <h2 class="text-xs uppercase tracking-wider text-gray-500 mb-4 font-medium">{section['title']}</h2>
+        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">{label}</p>
 {content_section}
       </section>
 '''
@@ -578,7 +803,7 @@ def main():
     # Parse arguments
     markdown_file = sys.argv[1]
     output_file = 'index.html'
-    photo_file = 'Jan_Hoelter_Foto.jpeg'
+    photo_file = 'assets/Jan_Hoelter_Foto.jpeg'
     lang = 'de'
 
     i = 2
