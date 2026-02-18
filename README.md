@@ -1,144 +1,121 @@
-# CV Generator
+# CV – Jan Hölter
 
-Automatisiertes CV-Generierungssystem mit Unterstützung für HTML und Word-Formate, Mehrsprachigkeit (DE/EN) und GitHub Pages.
+Minimalistischer HTML-CV-Generator. Markdown rein, druckbares HTML raus.
+
+**Live:** https://jlhoelter.github.io/cv/
+
+---
 
 ## Quick Start
 
 ```bash
-cd /Users/jan/workspace/tracks/jobsuche/cv
-
-# HTML generieren (Standard: Deutsch)
+# 1. CV generieren
 ./generate-html.sh
 
-# Word-Dokument generieren
-./generate-cv.sh CV_Jan_Hoelter_TIMOCOM_DE.md
+# 2. Lokal im Browser öffnen
+open index.html
 
-# Englische HTML-Version
-LANG=en OUTPUT_FILE=index-en.html ./generate-html.sh
+# 3. Online publishen
+./publish-cv.sh
 ```
 
-## Features
-
-- ✅ **Minimalist HTML CV** mit Tailwind CSS
-- ✅ **Word-Export** mit python-docx
-- ✅ **Zweisprachig** (Deutsch/English)
-- ✅ **Druck-optimiert** mit A4 Seitenumbrüchen
-- ✅ **Share-Funktion** (Web Share API + Clipboard Fallback)
-- ✅ **GitHub Pages ready**
-- ✅ **Foto-Integration**
-- ✅ **Minimale Claude-Nutzung** (lokales Script)
+---
 
 ## Dateistruktur
 
 ```
 cv/
-├── CV_Jan_Hoelter_final.md      # Source Markdown (Deutsch)
-├── Jan_Hoelter_Foto.jpeg        # Profilfoto
-├── generate-html.py             # HTML-Generator (Python)
-├── generate-html.sh             # HTML-Wrapper-Skript
-├── generate-cv.sh               # Word-Dokument-Generator
-├── index.html                   # Generiertes HTML (Deutsch)
-├── index-en.html                # Generiertes HTML (Englisch, optional)
-└── README.md                    # Diese Datei
+├── CV_Jan_Hoelter_final.md    # Source of truth
+├── Jan_Hoelter_Foto.jpeg      # Profilfoto
+├── generate-html.py           # Generator (Python, keine Dependencies)
+├── generate-html.sh           # Generate Script
+├── publish-cv.sh              # Publish zu GitHub Pages
+├── index.html                 # Generiertes HTML (Output)
+├── cv-complete-final.html     # Reference Template (Design-Referenz)
+└── README.md
 ```
 
-## Verwendung
+---
 
-### HTML CV generieren
+## Workflow
 
+### CV aktualisieren
 ```bash
-# Deutsch (Standard)
+# 1. Markdown editieren
+vim CV_Jan_Hoelter_final.md
+
+# 2. HTML generieren und prüfen
 ./generate-html.sh
+open index.html
 
-# Englisch
-LANG=en OUTPUT_FILE=index-en.html ./generate-html.sh
+# 3. Im main workspace committen
+cd /Users/jan/workspace
+git add tracks/jobsuche/cv/
+git commit -m "Update CV"
+git push
 
-# Custom Markdown
-MARKDOWN_FILE=custom-cv.md OUTPUT_FILE=output.html ./generate-html.sh
+# 4. Online publishen
+cd tracks/jobsuche/cv
+./publish-cv.sh
 ```
 
-### Word-Dokument generieren
+### PDF exportieren
+1. `open index.html` im Browser
+2. `Cmd+P` → Drucken
+3. **"Kopf- und Fußzeilen" ausschalten**
+4. "Hintergrundgrafiken" einschalten
+5. Als PDF speichern
 
-```bash
-./generate-cv.sh <markdown-file>
-```
-
-### Python direkt
-
-```bash
-# Deutsch
-python3 generate-html.py CV_Jan_Hoelter_final.md -o index.html -l de
-
-# Englisch
-python3 generate-html.py CV_Jan_Hoelter_EN.md -o index-en.html -l en
-```
-
-### Mit globalem Alias (optional)
-
-Füge zu `~/.zshrc` oder `~/.bashrc` hinzu:
-
-```bash
-alias generate-html='/Users/jan/workspace/tracks/jobsuche/cv/generate-html.sh'
-alias generate-cv='/Users/jan/workspace/tracks/jobsuche/cv/generate-cv.sh'
-```
-
-Dann von überall:
-
-```bash
-generate-html
-generate-cv CV_Jan_Hoelter_COMPANY.md
-```
+---
 
 ## Markdown-Struktur
-
-Der HTML-Generator erwartet diese Struktur:
 
 ```markdown
 # Name
 **Title**
 *Tagline*
 
-Location
+Köln, Deutschland
 📧 email@example.com
 📞 +49 123 456789
 🔗 https://linkedin.com/in/profile
 
 ---
 
-## Sektion (z.B. Profil)
+## Profil
 
-Fließtext Paragraph 1...
+Paragraph 1...
 
-Fließtext Paragraph 2...
+Paragraph 2...
 
 ---
 
 ## Berufserfahrung
 
-### **Firma Name**
+### Firma Name
 **Position**
 *Zeitraum | Ort*
 
 Optionale Beschreibung...
 
-- Aufzählungspunkt 1
-- Aufzählungspunkt 2
+- Bullet 1
+- Bullet 2
 
-### **Zweite Firma**
-**Zweite Position**
-*Zeitraum | Ort*
+---
 
-- Aufzählungspunkt 1
-- Aufzählungspunkt 2
+## Ausbildung
+
+### Universität
+Abschluss
+*Zeitraum*
 
 ---
 
 ## Schwerpunkte
 
-### Kompetenzbereich 1
-Beschreibung...
+Intro-Paragraph...
 
-### Kompetenzbereich 2
+### Kompetenzbereich 1
 Beschreibung...
 
 ### Methoden & Arbeitsweisen
@@ -149,167 +126,48 @@ Beschreibung...
 
 ## Haltung
 
+Intro-Paragraph...
+
 ### Prinzip 1
 Beschreibung...
 
-### Prinzip 2
-Beschreibung...
+---
+
+## Sprachen
+
+- Deutsch (Muttersprache)
+- Englisch (fließend)
 ```
 
-### Spezial-Sektionen
+### Besonderheiten
+- **Schwerpunkte:** Subsections → 2-Spalten Cards; "Methoden" → Pills
+- **Haltung:** Subsections → 2×2 Grid Cards
+- **Sprachen:** Bullets → einzelner Text mit `·` Separator
+- **Berufserfahrung:** Beschreibung nach `*Zeitraum*` → `text-xs` Paragraph vor Bullets
 
-- **Schwerpunkte:** Subsections → 2-Spalten Cards, "Methoden" → Pills
-- **Haltung:** Subsections → 2x2 Grid Cards
-- **Berufserfahrung:** Company (###) → Timeline mit Job-Details und Bullets
+---
 
 ## Design
 
-### HTML Output
-- **Minimalist Style:** Grayscale Farbpalette (keine Farben)
-- **Typografie:** Inter Font (Google Fonts)
-- **Layout:**
-  - Header mit Foto (w-28 h-28, object-top, grayscale)
-  - Kontakt-Icons horizontal
-  - 2-Spalten Cards (Schwerpunkte, Haltung)
-  - Pills für Methoden (rounded-full, border)
-- **Print-Optimiert:** A4, @page margins, no-break classes
-- **Responsive:** Tailwind CSS via CDN
-- **Actions:** Drucken + Teilen Buttons (Web Share API)
+- **Font:** Inter (Google Fonts)
+- **CSS:** Tailwind via CDN (kein Build-Step)
+- **Layout:** max-w-3xl, Shadow-Container, A4-optimiert
+- **Print:** `@page { size: A4; margin: 12mm 15mm; }`
+- **Page Breaks:** Sections bleiben zusammen (`no-break`), Berufserfahrung darf zwischen Jobs umbrechen
 
-### Word Output
-- **Dateiname:** Identisch mit Input, `.md` → `.docx`
-- **Foto:** Automatisch eingefügt wenn `Jan_Hoelter_Foto.jpeg` existiert
-- **Layout:**
-  - Schmale Margins (professionell)
-  - Foto rechts oben (1.2" breit)
-  - Überschriften in Dunkelblau (RGB 0,51,102)
-  - Kontaktinfo in Grau, kleiner Font
-  - Bullet Points mit Einzug
-
-## Beispiele
-
-### TIMOCOM CV generieren
-```bash
-./generate-cv.sh CV_Jan_Hoelter_TIMOCOM_DE.md
-# → CV_Jan_Hoelter_TIMOCOM_DE.docx
-```
-
-### Kartenmacherei CV generieren
-```bash
-./generate-cv.sh CV_Jan_Hoelter_Kartenmacherei.md
-# → CV_Jan_Hoelter_Kartenmacherei.docx
-```
-
-## GitHub Pages Setup
-
-### Option A: Dediziertes CV Repository
-
-```bash
-cd /Users/jan/workspace/tracks/jobsuche/cv
-git init
-git add .
-git commit -m "Initial commit: Automated CV generator with bilingual support"
-git remote add origin <github-repo-url>
-git push -u origin main
-```
-
-**GitHub Settings:**
-- Repository → Settings → Pages
-- Source: Deploy from branch `main`
-- Folder: `/` (root)
-
-**Ergebnis:** CV unter `https://username.github.io/repo-name/`
-
-### Option B: Innerhalb bestehendem Repository
-
-```bash
-cd /Users/jan/workspace
-git add tracks/jobsuche/cv/
-git commit -m "Add automated CV HTML generator"
-git push
-```
-
-**GitHub Settings:**
-- Source: `main` branch
-- Folder: `/tracks/jobsuche/cv` (wenn nested)
-
-**Optional: Custom Domain**
-- Füge `CNAME` Datei hinzu mit deiner Domain
-- DNS konfigurieren (A/CNAME Records)
-
-## Internationalisierung (i18n)
-
-### Englische Variante erstellen
-
-1. **Englisches Markdown erstellen:**
-   ```bash
-   cp CV_Jan_Hoelter_final.md CV_Jan_Hoelter_EN.md
-   # Inhalt übersetzen
-   ```
-
-2. **HTML generieren:**
-   ```bash
-   LANG=en OUTPUT_FILE=index-en.html MARKDOWN_FILE=CV_Jan_Hoelter_EN.md ./generate-html.sh
-   ```
-
-3. **Language Switcher hinzufügen (optional):**
-   In beiden HTML-Dateien im Header:
-   ```html
-   <div class="language-switcher">
-     <a href="index.html">DE</a> | <a href="index-en.html">EN</a>
-   </div>
-   ```
+---
 
 ## Troubleshooting
 
-### HTML-Generator
-
 **"Permission denied"**
 ```bash
-chmod +x generate-html.sh
-```
-
-**"Photo not found"**
-Skript läuft trotzdem, verwendet Default-Pfad. Setze:
-```bash
-PHOTO_FILE=/path/to/photo.jpg ./generate-html.sh
+chmod +x generate-html.sh publish-cv.sh
 ```
 
 **Fehlende Sektionen**
-- Prüfe Markdown-Struktur (## für Sektionen, ### für Subsektionen)
-- Verwende `---` Separator zwischen Haupt-Sektionen
-- Bullets müssen mit `- ` (Dash + Space) beginnen
+- `##` für Sektionen, `###` für Subsektionen
+- Kein `**` im `###`-Titel (z.B. `### Firma Name`, nicht `### **Firma Name**`)
+- Bullets mit `- ` (Dash + Space)
 
-**Print-Layout-Probleme**
-- Teste mit verschiedenen Browsern (Chrome, Firefox, Safari)
-- Prüfe `no-break` Klassen in generierten Sektionen
-- A4-Breite nicht überschreiten
-
-### Word-Generator
-
-**"python-docx not found"**
-```bash
-pip3 install python-docx
-```
-
-**"Permission denied"**
-```bash
-chmod +x generate-cv.sh
-```
-
-## Vorteile
-
-- ⚡ **Schnell:** 2 Sekunden statt mehrere Minuten
-- 💰 **Kostenlos:** Keine Claude-Tokens
-- 🔄 **Wiederholbar:** Immer gleiches Layout
-- 🎯 **Konsistent:** Keine Variationen zwischen CVs
-- 🌍 **Mehrsprachig:** DE/EN Unterstützung
-- 🛠️ **Anpassbar:** Scripts können erweitert werden
-- 🌐 **Hosted:** GitHub Pages für öffentliche URL
-
-## Dependencies
-
-- **Python 3:** Standard installation (kein pip package nötig für HTML)
-- **python-docx:** Nur für Word-Export (`pip3 install python-docx`)
-- **Tailwind CSS:** Via CDN (kein Build-Step)
-- **Git:** Für GitHub Pages (optional)
+**Print: Seite bricht falsch um**
+- Chrome: Weitere Einstellungen → Kopf- und Fußzeilen ausschalten
