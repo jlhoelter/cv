@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1584" height="396" viewBox="0 0 1584 396">
+
+  <!-- Background: zinc-50 -->
+  <rect width="1584" height="396" fill="#fafafa"/>
+
+  <!-- Concentric circles – centered right, partially clipped -->
+  <!-- Outermost, very faint -->
+  <circle cx="1300" cy="198" r="380" fill="none" stroke="#e4e4e7" stroke-width="1"/>
+  <circle cx="1300" cy="198" r="310" fill="none" stroke="#e4e4e7" stroke-width="1"/>
+  <circle cx="1300" cy="198" r="240" fill="none" stroke="#d4d4d8" stroke-width="1"/>
+  <circle cx="1300" cy="198" r="170" fill="none" stroke="#d4d4d8" stroke-width="1.5"/>
+  <!-- Teal accent circles -->
+  <circle cx="1300" cy="198" r="100" fill="none" stroke="#99f6e4" stroke-width="1.5"/>
+  <circle cx="1300" cy="198" r="50"  fill="none" stroke="#2dd4bf" stroke-width="2"/>
+  <!-- Center dot -->
+  <circle cx="1300" cy="198" r="6" fill="#0d9488"/>
+
+  <!-- Subtle horizontal line through center -->
+  <line x1="0" y1="198" x2="1584" y2="198" stroke="#e4e4e7" stroke-width="0.5"/>
+
+  <!-- Left anchor: single teal vertical accent -->
+  <rect x="100" y="120" width="2" height="156" fill="#2dd4bf" rx="1"/>
+
+</svg>
