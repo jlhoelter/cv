@@ -214,7 +214,7 @@ _SVG_LINKEDIN = (
 class HTMLGenerator:
     """Generate HTML from parsed CV data using Zinc-Teal Brand Kit"""
 
-    def __init__(self, data: Dict[str, Any], photo_path: str = 'assets/Jan_Hoelter_Foto.jpeg', lang: str = 'de'):
+    def __init__(self, data: Dict[str, Any], photo_path: str = 'assets/Jan_Musiedlak_Foto.jpeg', lang: str = 'de'):
         self.data = data
         self.photo = photo_path
         self.lang = lang
@@ -662,7 +662,7 @@ def main():
     # Parse arguments
     markdown_file = sys.argv[1]
     output_file = 'index.html'
-    photo_file = 'assets/Jan_Hoelter_Foto.jpeg'
+    photo_file = 'assets/Jan_Musiedlak_Foto.jpeg'
     lang = 'de'
 
     i = 2

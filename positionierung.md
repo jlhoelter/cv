@@ -1,4 +1,4 @@
-# Jan Hölter – Candidate Positioning Paper
+# Jan Musiedlak – Candidate Positioning Paper
 ## Product Leadership · Head of Product / VP Product / CPO
 
 ---

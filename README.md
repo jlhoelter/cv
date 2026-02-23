@@ -1,4 +1,4 @@
-# CV – Jan Hölter
+# CV – Jan Musiedlak
 
 HTML-CV-Generator mit Zinc-Teal Brand Kit. Markdown rein, druckbares HTML raus.
 
@@ -25,14 +25,14 @@ open index.html
 
 ```
 cv/
-├── CV_Jan_Hoelter_final.md    # Source of truth
+├── CV_Jan_Musiedlak_final.md    # Source of truth
 ├── generate-html.py           # Generator (Python, keine Dependencies)
 ├── generate-html.sh           # Generate Script
 ├── publish-cv.sh              # Publish zu GitHub Pages
 ├── index.html                 # Generiertes HTML (Output)
 ├── jan-cv-reference.html      # Design-Referenz (Brand Kit)
 ├── assets/
-│   ├── Jan_Hoelter_Foto.jpeg  # Profilfoto
+│   ├── Jan_Musiedlak_Foto.jpeg  # Profilfoto
 │   └── fonts/                 # Lokale Geist-Fonts (WOFF2)
 │       ├── Geist-Regular.woff2
 │       ├── Geist-Medium.woff2
@@ -52,7 +52,7 @@ cv/
 ### CV aktualisieren
 ```bash
 # 1. Markdown editieren
-vim CV_Jan_Hoelter_final.md
+vim CV_Jan_Musiedlak_final.md
 
 # 2. HTML generieren und prüfen
 ./generate-html.sh

@@ -1,4 +1,4 @@
-# Jan Hölter
+# Jan Musiedlak
 **Product & Leadership Executive**
 *Klarheit, Fokus und Entscheidungsfähigkeit in komplexen Produktorganisationen schaffen*
 
