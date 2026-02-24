@@ -482,7 +482,7 @@ class HTMLGenerator:
 
         return f'''      <!-- Berufserfahrung -->
       <section class="mb-16">
-        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">{label}</p>
+        <p class="section-label font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">{label}</p>
         <div class="space-y-10">
 {jobs_section}
         </div>
@@ -582,11 +582,11 @@ class HTMLGenerator:
                 cards_html.append(self._render_card(sub_title, description))
 
         cards_section = '\n'.join(cards_html)
-        grid_html = f'        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">\n{cards_section}\n        </div>\n' if cards_html else ''
+        grid_html = f'        <div class="ref-grid grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">\n{cards_section}\n        </div>\n' if cards_html else ''
 
         return f'''      <!-- Schwerpunkte -->
       <section class="mb-16">
-        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">{label}</p>
+        <p class="section-label font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">{label}</p>
 {hero_html}{grid_html}{methoden_html}
       </section>
 '''
@@ -613,8 +613,8 @@ class HTMLGenerator:
 
         return f'''      <!-- Haltung -->
       <section class="mb-16">
-        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-4 page-break">{label}</p>
-{hero_html}        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <p class="section-label font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-4 page-break">{label}</p>
+{hero_html}        <div class="ref-grid grid grid-cols-1 sm:grid-cols-2 gap-4">
 {cards_section}
         </div>
       </section>

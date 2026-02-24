@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jan Musiedlak – Product &amp; Leadership Executive</title>
-  <!-- Generated: 2026-02-24 15:20 | Photo: assets/Jan_Musiedlak_Foto.jpeg -->
+  <!-- Generated: 2026-02-24 15:55 | Photo: assets/Jan_Musiedlak_Foto.jpeg -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -113,6 +113,12 @@
     .no-break {
       break-inside: avoid;
     }
+    .section-label {
+      break-after: avoid;
+    }
+    .ref-grid {
+      break-inside: avoid;
+    }
     @page {
       size: A4;
       margin: 10mm 18mm;
@@ -210,7 +216,7 @@
     <div class="mx-auto px-8 py-10 print:py-0 max-w-[210mm]">
       <!-- Berufserfahrung -->
       <section class="mb-16">
-        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">Work Experience</p>
+        <p class="section-label font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">Work Experience</p>
         <div class="space-y-10">
           <div class="grid grid-cols-[9rem_1fr] gap-x-6 no-break">
             <div><span class="text-[0.85rem] text-zinc-500 whitespace-nowrap">Jan 2021 – present</span></div>
@@ -299,11 +305,11 @@
     <div class="mx-auto px-8 py-12 max-w-[210mm]">
       <!-- Schwerpunkte -->
       <section class="mb-16">
-        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">Focus Areas</p>
+        <p class="section-label font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">Focus Areas</p>
         <p class="text-zinc-900 leading-[1.35] mb-10 text-[1.4em] font-medium">
           I work at the intersection of strategy, product, and organization — with the goal of structurally embedding decision-making capability and making product work effective.
         </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+        <div class="ref-grid grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
           <div class="ref-card no-break">
             <p class="font-medium text-zinc-900 text-[1rem] mb-2">Building &amp; Scaling Product Organizations</p>
             <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">Structuring cross-functional teams with clear ownership and low dependencies. Building leadership layers, rhythms, and escalation paths that grow with the organization — not against it.</p>
@@ -336,11 +342,11 @@
 
       <!-- Haltung -->
       <section class="mb-16">
-        <p class="font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-4 page-break">Principles</p>
+        <p class="section-label font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-4 page-break">Principles</p>
         <p class="text-zinc-900 leading-[1.35] mb-10 text-[1.4em] font-medium">
           I look to work with organizations where autonomy, clarity, and shared decision-making are the foundation for scalable product work.
         </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="ref-grid grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="ref-card no-break">
             <p class="font-medium text-zinc-900 text-[1rem] mb-2">Clarity enables speed</p>
             <p class="text-zinc-600 text-[0.85rem] print:text-[0.75rem] leading-relaxed">Sustainable speed only emerges where goals, decision spaces, and priorities are explicit. Unclear mandates generate activity, but not impact.</p>
