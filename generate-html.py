@@ -587,7 +587,9 @@ class HTMLGenerator:
         return f'''      <!-- Schwerpunkte -->
       <section class="mb-16">
         <p class="section-label font-mono text-[0.72rem] font-medium uppercase tracking-wider text-zinc-600 mb-8">{label}</p>
-{hero_html}{grid_html}{methoden_html}
+        <div class="no-break">
+{hero_html}{grid_html}        </div>
+{methoden_html}
       </section>
 '''
 
