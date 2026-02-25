@@ -5,7 +5,7 @@
 Köln, Deutschland  
 📧 j.hoelter85@gmail.com  
 📞 +49 173 5448963  
-🔗 https://www.linkedin.com/in/jan-hölter-89b538109  
+🔗 https://www.linkedin.com/in/jan-musiedlak  
 
 ---
 
