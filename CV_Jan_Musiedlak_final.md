@@ -1,6 +1,6 @@
 # Jan Musiedlak
-**Product & Leadership Executive**
-*Klarheit, Fokus und Entscheidungsfähigkeit in komplexen Produktorganisationen schaffen*
+**Product Leader**
+*Klarheit, Fokus und Entscheidungsfähigkeit als Grundlage exzellenter Produktorganisationen*
 
 Köln, Deutschland  
 📧 j.hoelter85@gmail.com  
