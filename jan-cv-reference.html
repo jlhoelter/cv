@@ -141,6 +141,12 @@
       .page-break {
         break-before: page;
       }
+      a[href^="https://"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.65rem;
+        color: #555;
+        font-weight: normal;
+      }
     }
   </style>
 </head>
