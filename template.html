@@ -135,10 +135,11 @@
         print-color-adjust: exact;
       }
       .page-break { break-before: page; }
+      a[href^="https://"] .link-label { display: none; }
       a[href^="https://"]::after {
-        content: " (" attr(href) ")";
+        content: attr(href);
         font-size: 0.65rem;
-        color: #555;
+        color: #0d9488;
         font-weight: normal;
       }
     }

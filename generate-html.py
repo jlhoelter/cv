@@ -257,7 +257,7 @@ class HTMLGenerator:
                 f'              <a href="{href}"\n'
                 f'                class="{base}{hover}">\n'
                 f'                {svg}\n'
-                f'                {text}\n'
+                f'                <span class="link-label">{text}</span>\n'
                 f'              </a>'
             )
         else:
