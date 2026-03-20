@@ -1,6 +1,6 @@
 # Jan Musiedlak
 **Product Leader**
-*Clarity, Focus, and Decision-Making as the Foundation for Excellent Product Organisations*
+*Clarity, Focus, and Clear Decision Structures as the Foundation for Effective Product Organisations*
 
 Cologne, Germany
 📧 jan@musiedlak.de
@@ -11,11 +11,11 @@ Cologne, Germany
 
 ## Profil
 
-I shape product organisations in complex, established structures — particularly where strategic vision, prioritisation, and decision logic are not yet in place.
+I build and shape product organisations in complex, established environments — particularly where strategic direction, clear decision structures, and prioritisation are not yet in place.
 
-My focus is on structurally embedding outcome orientation: clear goal definition, explicit decision authority, transparent prioritisation, and robust escalation mechanisms. I understand product work as the systematic reduction of uncertainty through clear decisions and consistent focus.
+My focus is on creating the conditions for sustained outcome orientation: clear goals, well-defined decision authority, transparent prioritisation, and escalation paths that hold under pressure. I see product work as the disciplined reduction of uncertainty — through deliberate decisions and consistent focus.
 
-I combine analytical rigour with clear, people-centred leadership. I make conflicting objectives explicit, structure decision options, and create orientation — without losing sight of the individual perspectives and motivations of those who carry and execute those decisions. Performance, to me, emerges where clarity, accountability, and trust converge.
+I combine analytical rigour with people-centred leadership. I name conflicting objectives openly, structure the options on the table, and provide direction — while staying attentive to the perspectives and motivations of the people who will have to make those decisions work. In my experience, sustained performance emerges where clarity, accountability, and trust reinforce each other.
 
 ---
 
@@ -25,12 +25,12 @@ I combine analytical rigour with clear, people-centred leadership. I make confli
 **Head of Digital Products**
 *Jan 2021 – heute | Essen, Cologne, Kevelaer*
 
-Overall responsibility for digital product initiatives in a mid-sized industrial company with a strong core business and established organisational structures.
-- Built and scaled the product and engineering organisation from 4 to over 25 internal employees (plus external partners).
-- Strategic development of digital self-service products with direct impact on core business; 65% of planning processes handled independently by customers, enabled through targeted product and process design.
-- Introduced structured hypothesis and prioritisation approaches based on quantitative signals along the customer journey, despite limited data infrastructure.
-- Navigated strategic goal conflicts and prioritisation challenges in established structures; developed a sharp focus on explicit decision spaces and transparent prioritisation as prerequisites for effective product work.
-- Responsibility for exploratory digital initiatives beyond core business; deep learnings in capital allocation, focus, and organisational scalability.
+Led all digital product initiatives at a mid-sized industrial company with a strong core business and deeply established organisational structures.
+- Grew the product and engineering organisation from 4 to over 25 people, including external partners.
+- Developed digital self-service products with direct impact on the core business — enabling customers to complete 65% of planning processes independently, through deliberate product and UX design.
+- Introduced hypothesis-driven prioritisation using quantitative signals from the customer journey, despite limited data infrastructure.
+- Consistently navigated competing priorities and structural constraints — an experience that reinforced my conviction that explicit decision rights and transparent prioritisation are not optional, but foundational.
+- Led exploratory digital initiatives beyond the core business, gaining significant experience in capital allocation, strategic focus, and the realities of organisational scalability.
 
 ---
 
@@ -38,12 +38,12 @@ Overall responsibility for digital product initiatives in a mid-sized industrial
 **Head of Digitization Labs**
 *Mai 2019 – Jun 2020 | Solingen*
 
-Led three interdisciplinary product teams in the context of Product Discovery as a Service for enterprise clients.
-- Responsibility for hypothesis-driven product development in early market and innovation phases.
-- Developed iterative target visions and outcome models in highly uncertain contexts.
-- Ran structured discovery formats with close customer involvement and consistent experiment-based validation.
+Led three interdisciplinary product teams delivering Product Discovery as a Service to enterprise clients.
+- Drove hypothesis-driven product development in early market and innovation contexts.
+- Defined product direction iteratively in fast-moving, highly uncertain environments.
+- Ran structured discovery processes with close customer involvement and experiment-based validation throughout.
 - Supported investment and prioritisation decisions at senior level.
-- Tested alternative revenue models with pilot customers; relevant strategic learnings despite limited scale.
+- Tested alternative revenue models with pilot customers — with valuable strategic lessons, even where scale remained limited.
 
 ---
 
@@ -51,9 +51,9 @@ Led three interdisciplinary product teams in the context of Product Discovery as
 **Innovation Strategist**
 *Jul 2017 – Apr 2019 | Dortmund*
 
-- Worked in a strategic innovation unit focused on early-stage innovation, ideation, and exploration of new business models.
-- Design and facilitation of workshops to identify opportunity spaces based on trend, market, and context analysis.
-- Contributed to the development and preparation of a spin-off venture within a major German insurance company, focused on a novel insurance and service proposition (confidential).
+- Part of a strategic innovation unit focused on early-stage innovation, ideation, and new business model exploration.
+- Designed and facilitated workshops to identify opportunity spaces through trend, market, and context analysis.
+- Contributed to the development and preparation of a spin-off within a major German insurance group, centred on a novel insurance and service proposition (confidential).
 
 ---
 
@@ -62,8 +62,8 @@ Led three interdisciplinary product teams in the context of Product Discovery as
 *Apr 2013 – Jun 2017 | Solingen*
 
 - IT consulting with a focus on software development, primarily in the insurance sector.
-- Progressively expanded role from technical delivery towards product, decision-making, and concept-related topics.
-- Supported clients in translating complex business processes into digital solutions.
+- Progressively moved from technical delivery into product thinking, decision-making, and solution design.
+- Helped clients translate complex business processes into workable digital solutions.
 
 ---
 
@@ -72,7 +72,7 @@ Led three interdisciplinary product teams in the context of Product Discovery as
 *Feb 2010 – Mär 2013*
 
 - Software development in the field of industrial automation systems.
-- Built a solid technical foundation as the basis for later product and leadership roles.
+- Built a solid technical foundation that informed my later work in product and leadership roles.
 
 ---
 
@@ -86,23 +86,23 @@ Bachelor of Science (B.Sc.), Computer Science
 
 ## Schwerpunkte
 
-I work at the intersection of strategy, product, and organisation — with the goal of structurally embedding decision-making capability and making product work effective.
+I work at the intersection of strategy, product, and organisation — building the conditions under which teams can make good decisions and deliver meaningful outcomes.
 
-### Strategic Product Leadership & Decision Logic
+### Strategic Product Leadership & Decision-Making Clarity
 
-Translating strategic vision into prioritised product work. Structuring decision options, making conflicting objectives explicit, and building clear escalation and prioritisation mechanisms.
+Translating strategic direction into prioritised product work. Structuring options, naming conflicting objectives clearly, and building escalation and prioritisation mechanisms that hold.
 
-### Outcome- & Hypothesis-Driven Product Work
+### Outcome- and Hypothesis-Driven Product Work
 
-Systematic reduction of uncertainty through clear hypotheses, experiments, and verifiable target outcomes. Use of quantitative and qualitative signals for orientation — particularly in early-stage or data-sparse contexts.
+Reducing uncertainty systematically through clear hypotheses, experiments, and testable outcome goals. Using quantitative and qualitative signals to stay oriented — particularly in early-stage or data-sparse contexts.
 
 ### Portfolio & Structural Work
 
-Capital allocation, focus, and organisational scalability of digital initiatives. Navigating tensions between core business, exploration, and long-term strategic direction.
+Capital allocation, strategic focus, and the organisational conditions for scaling digital initiatives. Managing the tensions between core business, exploration, and long-term direction.
 
 ### Leadership & Team Performance
 
-Building and developing high-performing product and engineering teams. Combining clarity, accountability, and psychological safety. Restoring decision-making capability in conflict- or uncertainty-driven situations.
+Building and developing strong product and engineering teams. Creating the conditions where clarity, accountability, and psychological safety reinforce each other. Re-establishing decision-making capability in situations shaped by conflict or uncertainty.
 
 ---
 ### Methods & Ways of Working
@@ -115,23 +115,23 @@ Building and developing high-performing product and engineering teams. Combining
 ---
 ## Haltung
 
-I look to work with organisations where strategic clarity, shared decision-making capability, and a strong leadership team form the foundation for sustainable product development.
+I work best with organisations that treat strategic clarity, clear decision structures, and strong leadership as the foundation for sustainable product development — not as a luxury.
 
 ### Clarity Enables Speed
 
-Sustainable speed only emerges where target visions, decision spaces, and priorities are explicit. Unclear mandates generate activity — but not impact.
+Sustainable pace only comes when direction, decision rights, and priorities are made explicit. Unclear mandates create movement — but rarely impact.
 
-### Decisions Are a Team Achievement
+### Good Decisions Are Made Together
 
-Good decisions emerge through productive friction, not hierarchy. I make conflicting objectives visible, structure options, and encourage controversial discussions — with the ambition of developing solutions that hold, and acting on them together.
+Good decisions rarely emerge from hierarchy — they need productive friction. I name conflicting objectives, structure the options on the table, and encourage the hard conversations, with the goal of reaching conclusions that everyone can commit to.
 
-### People Before Mechanics
+### People Before Process
 
-Product organisations are not resource structures. Performance emerges when people experience orientation, accountability, and psychological safety. Clarity and empathy are not opposites — they are prerequisites for excellence.
+Product organisations are not delivery machines. Performance emerges when people have direction, accountability, and the safety to speak up. Clarity and empathy aren't in tension — they're both prerequisites for excellence.
 
-### Shaping Uncertainty Deliberately
+### Managing Uncertainty Deliberately
 
-Product work is the systematic reduction of uncertainty. Hypotheses, experiments, and transparent assumptions matter more than perfection or false certainty.
+Product work is, at its core, the disciplined management of uncertainty. Hypotheses, experiments, and honest assumptions beat perfection every time — and certainty that can't be questioned is usually false.
 
 ---
 ## Sprachen
