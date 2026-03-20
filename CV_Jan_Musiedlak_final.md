@@ -27,7 +27,7 @@ Dabei verbinde ich analytische Schärfe mit einer klaren, menschenorientierten F
 
 Gesamtverantwortung für digitale Produktinitiativen in einem mittelständischen Industrieunternehmen mit starkem Kerngeschäft und gewachsenen organisatorischen Strukturen.
 - Aufbau und Skalierung der Produkt- und Entwicklungsorganisation von 4 auf über 25 interne Mitarbeitende (zzgl. externer Partner).
-- Strategische Weiterentwicklung digitaler Self-Service-Produkte mit direktem Einfluss auf das Kerngeschäft; 65 % der Planungen wurden durch Kunden eigenständig durchgeführt, ermöglicht durch gezielte Produkt- und Prozessgestaltung.
+- Strategische Weiterentwicklung digitaler Self-Service-Produkte mit direktem Einfluss auf das Kerngeschäft — 65 % aller Planungen durch Kunden eigenständig abgeschlossen; messbarer Indikator für produktgetriebene Adoption und Self-Service-Effizienz.
 - Einführung strukturierter Hypothesen- und Priorisierungsansätze auf Basis quantitativer Signale entlang der Customer Journey trotz begrenzter Datenbasis.
 - Auseinandersetzung mit strategischen Zielkonflikten und Priorisierungsfragen in einem Umfeld mit gewachsenen Strukturen; daraus ein klarer Fokus auf explizite Entscheidungsräume und transparente Priorisierung als Voraussetzung für wirksame Produktarbeit.
 - Verantwortung für explorative digitale Initiativen jenseits des Kerngeschäfts; fundierte Lernerfahrungen zu Kapitalallokation, Fokus und organisationaler Anschlussfähigkeit.

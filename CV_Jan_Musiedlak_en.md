@@ -27,7 +27,7 @@ I combine analytical rigour with people-centred leadership. I name conflicting o
 
 Led all digital product initiatives at a mid-sized industrial company with a strong core business and deeply established organisational structures.
 - Grew the product and engineering organisation from 4 to over 25 people, including external partners.
-- Developed digital self-service products with direct impact on the core business — enabling customers to complete 65% of planning processes independently, through deliberate product and UX design.
+- Developed digital self-service products with direct impact on the core business — 65% of all planning processes completed independently by customers, a measurable indicator of product-led adoption and self-service efficiency.
 - Introduced hypothesis-driven prioritisation using quantitative signals from the customer journey, despite limited data infrastructure.
 - Consistently navigated competing priorities and structural constraints — an experience that reinforced my conviction that explicit decision rights and transparent prioritisation are not optional, but foundational.
 - Led exploratory digital initiatives beyond the core business, gaining significant experience in capital allocation, strategic focus, and the realities of organisational scalability.
