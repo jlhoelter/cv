@@ -26,7 +26,7 @@ Dabei verbinde ich analytische Schärfe mit einer klaren, menschenorientierten F
 *Jan 2021 – heute | Essen, Köln, Kevelaer*
 
 Gesamtverantwortung für digitale Produktinitiativen in einem mittelständischen Industrieunternehmen mit starkem Kerngeschäft und gewachsenen organisatorischen Strukturen.
-- Aufbau und Skalierung der Produkt- und Entwicklungsorganisation von 4 auf über 25 interne Mitarbeitende (zzgl. externer Partner).
+- Aufbau und Führung einer interdisziplinären Produktorganisation von 4 auf über 25 Personen — mit Product Management, UX (Research, Konzeption und Design) und Engineering (zzgl. externer Partner).
 - Strategische Weiterentwicklung digitaler Self-Service-Produkte mit direktem Einfluss auf das Kerngeschäft — 65 % aller Planungen durch Kunden eigenständig abgeschlossen; messbarer Indikator für produktgetriebene Adoption und Self-Service-Effizienz.
 - Einführung strukturierter Hypothesen- und Priorisierungsansätze auf Basis quantitativer Signale entlang der Customer Journey trotz begrenzter Datenbasis.
 - Auseinandersetzung mit strategischen Zielkonflikten und Priorisierungsfragen in einem Umfeld mit gewachsenen Strukturen; daraus ein klarer Fokus auf explizite Entscheidungsräume und transparente Priorisierung als Voraussetzung für wirksame Produktarbeit.
