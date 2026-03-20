@@ -5,62 +5,52 @@
 
 ## Wer ich bin
 
-Ich bin kein klassischer „Build-it-and-ship-it"-Product Leader. Ich werde wirksam in Organisationen, die merken: mehr Delivery allein löst ihr eigentliches Problem nicht.
+Mein Kernbeitrag ist Entscheidungsinfrastruktur. Nicht Prozesse, nicht Frameworks — sondern Bedingungen, unter denen Teams eigenständig gute Entscheidungen treffen können: klare Strategie, explizite Priorisierungslogik, echte Entscheidungsrechte. Das ist Product Leadership als Organisationsaufgabe, nicht als Lieferverantwortung.
 
-Mein Kernbeitrag liegt in der strukturellen Verankerung von Klarheit – in Produktstrategie, Priorisierungslogik und Entscheidungsarchitektur. Ich baue keine Prozesse um der Prozesse willen. Ich schaffe Bedingungen, unter denen Teams eigenständig gute Entscheidungen treffen können.
-
-15 Jahre Erfahrung, zuletzt Head of Digital Products bei ABS Safety GmbH: Aufbau einer Produktorganisation von 4 auf über 25 Personen, digitale Transformation in einem mittelständischen Industrieunternehmen mit gewachsenen Strukturen.
+15 Jahre in Tech, davon fünf als Head of Digital Products bei ABS Safety GmbH — Aufbau einer Produktorganisation von 4 auf 25 Personen in einem mittelständischen Industrieunternehmen.
 
 ---
 
 ## Wo ich wirksam werde
 
-Ich funktioniere am stärksten in Kontexten, in denen:
+Mein typischer Einstieg: Eine Organisation mit gutem Team, die trotzdem nicht vorankommt. Die Symptome sind meist erkennbar — zu viele Initiativen, diffuse Verantwortung, Strategie als Gefühl statt als explizite Wette.
 
-- viele Initiativen parallel laufen und Fokus fehlt
-- Verantwortung diffus ist und Entscheidungen vermieden werden
-- Strategie eher Gefühl als explizite Wette ist
-- die Organisation bereit ist, Klarheit zu wollen – und auch auszuhalten
+Das Muster dahinter: Entscheidungen werden vermieden, weil die Logik fehlt, sie zu begründen. Ich baue diese Logik auf.
 
-Typische Ausgangssituation: „Wir haben ein gutes Team, aber wir kommen nicht voran." Oder: „Wir priorisieren alles – also nichts."
+Voraussetzung: Die Organisation muss Klarheit wollen — und bereit sein, die Konsequenzen auszuhalten.
 
 ---
 
 ## Was ich mitbringe
 
-**Entscheidungsarchitektur statt Methodensammlung**
-Produktstrategie als Set of Choices denken. Portfolio- und Priorisierungslogik aufbauen, die intern erklärt und durchgehalten werden kann – nicht nur bei Quartalsplanungen, sondern täglich.
+**Entscheidungslogik statt Methodensammlung**
+Produktstrategie als Set of Choices — nicht als Roadmap-Theater. Ich baue Priorisierungslogik, die täglich trägt und intern erklärt werden kann, nicht nur beim nächsten Strategie-Offsite.
 
 **Organisationsstruktur entlang der Wertschöpfung**
-Produktorganisationen so aufstellen, dass Ownership klar ist und Teams liefern können – nicht entlang von Projekten oder politischen Kompromissen.
+Produktorganisationen so aufstellen, dass Ownership wirklich klar ist — nicht auf dem Papier, sondern in der täglichen Entscheidung. Nicht entlang von Projekten oder politischen Kompromissen.
 
-**Führung mit Klarheit**
-Konsequent, erklärbar, ohne Willkür. Jan kann Ambiguität aushalten, ohne sie einfach laufen zu lassen. Er macht Zielkonflikte explizit, statt sie zu moderieren.
+**Führung, die Zielkonflikte benennt**
+Ich moderiere keine Spannungen weg. Ich mache explizit, wenn A und B nicht gleichzeitig wahr sein können — und gestalte dann den Raum, in dem eine Entscheidung möglich wird. Das ist unbequemer als Konsens, aber haltbarer.
 
-**Aufbau- und Skalierungserfahrung**
-Von der ersten Einstellung bis zur skalierten Organisation. Recruiting, Strukturen, Rituale, Eskalationspfade – alles aus der Praxis, nicht aus dem Lehrbuch.
+**Aufbau aus erster Hand**
+Fünf Jahre Aufbau einer Produktorganisation: erste Einstellung, Strukturentscheidungen, Eskalationspfade, Skalierung auf 25 Personen. In einem Umfeld ohne Rückenwind — mittelständisches Industrieunternehmen, gewachsene Strukturen, kein Product-Native-Kontext.
 
 ---
 
 ## Was ich brauche, um wirksam zu sein
 
-- Echtes Mandat für Produktstrategie, Portfolio und Priorisierung
-- Strategy-Ownership auf CEO-/GF-Ebene – jemand, der Entscheidungen mitträgt
-- Bereitschaft, Entscheidungen explizit zu treffen und auch zu revidieren
-- Fokus statt Dauer-Exploration
-- Eine Organisation, die Klarheit will – und keine Angst davor hat
+Ich brauche ein echtes Mandat — für Produktstrategie, Portfolio und Priorisierung, nicht nur für Delivery. Und ich brauche auf CEO- oder GF-Ebene jemanden, der Entscheidungen nicht nur delegiert, sondern mitträgt.
 
-Ohne diese Rahmenbedingungen werde ich erfahrungsgemäß eher Kompensator als Gestalter. Das ist für beide Seiten verschwendetes Potenzial.
+Wenn diese Bedingungen stimmen, kann ich eine Organisation strukturell weiterbringen. Wenn nicht, werde ich zum Kompensator — und das nutzt keiner Seite etwas.
 
 ---
 
 ## Was nicht passt
 
-- Rollen ohne echte Entscheidungskompetenz (Head of Product als Lieferkette nach oben)
-- Reine Delivery- oder Projektverantwortung
-- Produktverantwortung ohne Portfolio- oder Budgetbezug
-- Organisationen, die Klarheit wollen, aber Entscheidungen strukturell vermeiden
-- Theory-X-Kulturen: Kontrolle statt Vertrauen, Reporting statt Ownership
+- Head of Product als verlängerte Werkbank nach oben — ohne strategische Entscheidungskompetenz
+- Reine Delivery- oder Projektverantwortung ohne Portfolio-Bezug
+- Kulturen, in denen Kontrolle Vertrauen ersetzt und Reporting als Führungsinstrument gilt
+- Organisationen, die Klarheit kommunikativ wollen, aber strukturell vermeiden
 
 ---
 
@@ -71,7 +61,7 @@ Ohne diese Rahmenbedingungen werde ich erfahrungsgemäß eher Kompensator als Ge
 | **Zielrollen**    | Head of Product, VP Product, CPO                         |
 | **Gehaltsrahmen** | 155k Fix + Mobilität (Firmenwagen oder Allowance)        |
 | **Location**      | Köln/Essen-Raum oder 100% remote (DACH)                  |
-| **Verfügbar**     | Ab Mai 2025                                              |
+| **Verfügbar**     | Ab sofort                                                |
 | **Branchen**      | B2B SaaS, PropTech, ConstructionTech, Social & GreenTech |
 | **Ausschluss**    | Rüstung, Fossil, Ausbeutungsmodelle                      |
 

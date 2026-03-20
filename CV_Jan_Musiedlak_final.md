@@ -3,7 +3,7 @@
 *Klarheit, Fokus und Entscheidungsfähigkeit als Grundlage exzellenter Produktorganisationen*
 
 Köln, Deutschland  
-📧 j.hoelter85@gmail.com  
+📧 jan@musiedlak.de
 📞 +49 173 5448963  
 🔗 https://www.linkedin.com/in/jan-musiedlak  
 
