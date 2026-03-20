@@ -9,21 +9,21 @@ Cologne, Germany
 
 ---
 
-## Profil
+## Profile
 
 I build and shape product organisations in complex, established environments — particularly where strategic direction, clear decision structures, and prioritisation are not yet in place.
 
-My focus is on creating the conditions for sustained outcome orientation: clear goals, well-defined decision authority, transparent prioritisation, and escalation paths that hold under pressure. I see product work as the disciplined reduction of uncertainty — through deliberate decisions and consistent focus.
+My focus is on creating the conditions for sustained outcome orientation: explicit goals, well-defined decision authority, transparent prioritisation, and escalation paths that hold under pressure. I see product work as the disciplined reduction of uncertainty — through deliberate choices and consistent focus.
 
 I combine analytical rigour with people-centred leadership. I name conflicting objectives openly, structure the options on the table, and provide direction — while staying attentive to the perspectives and motivations of the people who will have to make those decisions work. In my experience, sustained performance emerges where clarity, accountability, and trust reinforce each other.
 
 ---
 
-## Berufserfahrung
+## Experience
 
 ### ABS Safety GmbH
 **Head of Digital Products**
-*Jan 2021 – heute | Essen, Cologne, Kevelaer*
+*Jan 2021 – Present | Essen, Cologne, Kevelaer*
 
 Led all digital product initiatives at a mid-sized industrial company with a strong core business and deeply established organisational structures.
 - Grew the product and engineering organisation from 4 to over 25 people, including external partners.
@@ -36,7 +36,7 @@ Led all digital product initiatives at a mid-sized industrial company with a str
 
 ### codecentric AG
 **Head of Digitization Labs**
-*Mai 2019 – Jun 2020 | Solingen*
+*May 2019 – Jun 2020 | Solingen*
 
 Led three interdisciplinary product teams delivering Product Discovery as a Service to enterprise clients.
 - Drove hypothesis-driven product development in early market and innovation contexts.
@@ -69,14 +69,14 @@ Led three interdisciplinary product teams delivering Product Discovery as a Serv
 
 ### CRON Systems-Automation GmbH
 **Software Developer**
-*Feb 2010 – Mär 2013*
+*Feb 2010 – Mar 2013*
 
 - Software development in the field of industrial automation systems.
 - Built a solid technical foundation that informed my later work in product and leadership roles.
 
 ---
 
-## Ausbildung
+## Education
 
 ### Ruhr-Universität Bochum
 Bachelor of Science (B.Sc.), Computer Science
@@ -84,7 +84,7 @@ Bachelor of Science (B.Sc.), Computer Science
 
 ---
 
-## Schwerpunkte
+## Focus Areas
 
 I work at the intersection of strategy, product, and organisation — building the conditions under which teams can make good decisions and deliver meaningful outcomes.
 
@@ -113,9 +113,9 @@ Building and developing strong product and engineering teams. Creating the condi
 - Prioritisation & decision frameworks
 - Facilitation of strategic conflicts and escalation processes
 ---
-## Haltung
+## Leadership Philosophy
 
-I work best with organisations that treat strategic clarity, clear decision structures, and strong leadership as the foundation for sustainable product development — not as a luxury.
+I work best with organisations that treat strategic clarity, explicit decision structures, and strong leadership as the foundation for sustainable product development — not as a luxury.
 
 ### Clarity Enables Speed
 
@@ -134,7 +134,7 @@ Product organisations are not delivery machines. Performance emerges when people
 Product work is, at its core, the disciplined management of uncertainty. Hypotheses, experiments, and honest assumptions beat perfection every time — and certainty that can't be questioned is usually false.
 
 ---
-## Sprachen
+## Languages
 
 - German (native)
 - English (fluent)
