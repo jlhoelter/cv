@@ -30,6 +30,7 @@ Led all digital product initiatives at a mid-sized industrial company with a str
 - Developed digital self-service products with direct impact on the core business — 65% of all planning processes completed independently by customers, a measurable indicator of product-led adoption and self-service efficiency.
 - Introduced hypothesis-driven prioritisation using quantitative signals from the customer journey, despite limited data infrastructure.
 - Consistently navigated competing priorities and structural constraints — an experience that reinforced my conviction that explicit decision rights and transparent prioritisation are not optional, but foundational.
+- Designed and led a two-sided platform strategy (tradespeople/planners ↔ manufacturers/suppliers) — gaining hands-on understanding of platform mechanics and multi-sided incentive structures without achieving commercial scale.
 - Led exploratory digital initiatives beyond the core business, gaining significant experience in capital allocation, strategic focus, and the realities of organisational scalability.
 
 ---
