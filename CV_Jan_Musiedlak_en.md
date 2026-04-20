@@ -113,6 +113,12 @@ Building and developing strong product and engineering teams. Creating the condi
 - Explicit decision rights
 - Context, not control
 - Conflict as signal
+- B2B platform products
+- Self-service & adoption
+- Multi-sided ecosystems
+- Product org design & scaling
+- Senior stakeholder alignment
+- 0→1 and scale-up
 ---
 ## Leadership Philosophy
 

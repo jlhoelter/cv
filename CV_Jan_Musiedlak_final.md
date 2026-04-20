@@ -113,6 +113,12 @@ Aufbau und Entwicklung leistungsfähiger Produkt- und Entwicklungsteams. Verbind
 - Explizite Entscheidungsrechte
 - Kontext statt Kontrolle
 - Konflikt als Signal
+- B2B-Plattformprodukte
+- Self-Service & Adoption
+- Mehrseitige Ökosysteme
+- Produktorganisation aufbauen & skalieren
+- Senior Stakeholder Alignment
+- 0→1 und Scale-up
 ---
 ## Haltung
 
