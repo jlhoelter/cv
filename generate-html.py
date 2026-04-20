@@ -562,7 +562,7 @@ class HTMLGenerator:
         methoden_html = ''
 
         for sub in section['subsections']:
-            if 'Methoden' in sub['title'] or 'Methods' in sub['title']:
+            if any(kw in sub['title'] for kw in ('Methoden', 'Methods', 'Prinzipien', 'Principles')):
                 # Pills — '~' in bullet list switches to alt color class
                 pills = []
                 tag_class = 'ref-tag'
