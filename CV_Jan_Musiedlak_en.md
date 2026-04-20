@@ -108,11 +108,11 @@ Building and developing strong product and engineering teams. Creating the condi
 ---
 ### Methods & Ways of Working
 
-- OKR logic & outcome roadmapping
-- Hypothesis & experiment design
-- Discovery formats & qualitative user research
-- Prioritisation & decision frameworks
-- Facilitation of strategic conflicts and escalation processes
+- Outcome over output
+- Hypothesis before roadmap
+- Explicit decision rights
+- Context, not control
+- Conflict as signal
 ---
 ## Leadership Philosophy
 

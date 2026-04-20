@@ -108,11 +108,11 @@ Aufbau und Entwicklung leistungsfähiger Produkt- und Entwicklungsteams. Verbind
 ---
 ### Methoden & Arbeitsweisen
 
-- OKR-Logiken & Outcome-Roadmapping
-- Hypothesen- & Experiment-Design
-- Discovery-Formate & qualitative Nutzerinterviews
-- Priorisierungs- & Entscheidungsframeworks
-- Moderation strategischer Konflikte und Eskalationsprozesse
+- Outcome vor Output
+- Hypothese vor Roadmap
+- Explizite Entscheidungsrechte
+- Kontext statt Kontrolle
+- Konflikt als Signal
 ---
 ## Haltung
 
