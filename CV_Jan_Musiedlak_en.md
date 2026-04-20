@@ -106,13 +106,14 @@ Capital allocation, strategic focus, and the organisational conditions for scali
 Building and developing strong product and engineering teams. Creating the conditions where clarity, accountability, and psychological safety reinforce each other. Re-establishing decision-making capability in situations shaped by conflict or uncertainty.
 
 ---
-### Methods & Ways of Working
+### Principles & Focus
 
 - Outcome over output
 - Hypothesis before roadmap
 - Explicit decision rights
 - Context, not control
 - Conflict as signal
+- ~
 - B2B platform products
 - Self-service & adoption
 - Multi-sided ecosystems

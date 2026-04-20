@@ -563,11 +563,15 @@ class HTMLGenerator:
 
         for sub in section['subsections']:
             if 'Methoden' in sub['title'] or 'Methods' in sub['title']:
-                # Pills
+                # Pills — '~' in bullet list switches to alt color class
                 pills = []
+                tag_class = 'ref-tag'
                 for b in sub.get('bullets', []):
+                    if b.strip() == '~':
+                        tag_class = 'ref-tag-alt'
+                        continue
                     escaped_b = self._html_escape(b)
-                    pills.append(f'            <span class="ref-tag">{escaped_b}</span>')
+                    pills.append(f'            <span class="{tag_class}">{escaped_b}</span>')
                 pills_html = '\n'.join(pills)
                 methoden_title = self._html_escape(sub['title'])
                 methoden_html = f'''        <div class="no-break">

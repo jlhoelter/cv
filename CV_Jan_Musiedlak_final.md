@@ -106,13 +106,14 @@ Auseinandersetzung mit Kapitalallokation, Fokus und organisatorischer Anschlussf
 Aufbau und Entwicklung leistungsfähiger Produkt- und Entwicklungsteams. Verbindung von Klarheit, Verantwortung und psychologischer Sicherheit. Wiederherstellung von Entscheidungsfähigkeit in konflikt- oder unsicherheitsgeprägten Situationen.
 
 ---
-### Methoden & Arbeitsweisen
+### Prinzipien & Fokus
 
 - Outcome vor Output
 - Hypothese vor Roadmap
 - Explizite Entscheidungsrechte
 - Kontext statt Kontrolle
 - Konflikt als Signal
+- ~
 - B2B-Plattformprodukte
 - Self-Service & Adoption
 - Mehrseitige Ökosysteme
